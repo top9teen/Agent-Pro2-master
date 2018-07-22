@@ -2,7 +2,8 @@
     pageEncoding="utf-8"%>
     
  
-    <script type="text/javascript" src="access/js/index.js"></script>
+<jsp:include page="JsFooter.jsp"></jsp:include>
+    
    <div class="footer">
 	<p>© 2018 Exsime International Dot Com Co., Ltd. All Rights Reserved
 	Contact information:<a href="mailto:Project@example.com">Project@example.com</a>.</p>
