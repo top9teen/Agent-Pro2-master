@@ -10,8 +10,8 @@ result = (String) request.getAttribute("save");
 <style type="text/css">
 body {
     /* The image used */
-   background-image: url("access/img/bg/bg-index.jpg");
-	background-color : gray;
+  /*  background-image: url("access/img/bg/bg-index.jpg"); */
+	background-color : #f6f6f6;
     /* Full height */
     height: 100%; 
      margin: 0;
@@ -43,9 +43,9 @@ body {
 			class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top"
 			onclick="w3_open()"></i>
 
-<div class="w3-modal-content w3-animate-zoom w3-card w3-flat-wisteria"  >
-<h1 style="font-style: italic;" align="center">เก็บข้อมูล</h1>
-<h2 align="center" style="color: red;">*<span style="color: black;">กรุณากรอกข้อมูลที่เป็นจริงเพื่อประโยชน์แก่ตัวท่านเอง</span></h2>
+<div class="w3-modal-content w3-animate-zoom w3-card " style="background-color: #0193d7" >
+<h1 style="font-style: italic; color: white;" align="center">เก็บข้อมูล</h1>
+<h2 align="center" style="color: red;">*<span style="color:white;">กรุณากรอกข้อมูลที่เป็นจริงเพื่อประโยชน์แก่ตัวท่านเอง</span></h2>
 
 </div>
 
@@ -57,6 +57,11 @@ body {
 <%} else if  (result.equals("2")){ %>
 
 <jsp:include page="FormHistory/PageHistory2.jsp"></jsp:include>
+
+
+<%} else if  (result.equals("3")){ %>
+
+<jsp:include page="FormHistory/PageHistory3.jsp"></jsp:include>
 
 
 <%} %>

@@ -1,7 +1,7 @@
 <%@page import="com.test.Bean.SaveTable1Bean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<form>
+<form action="gotopage3">
 	<div
 		class="form-section form-position w3-modal-content w3-card w3-animate-bottom">
 		<h2 class="fs-title">1. ข้อมูลส่วนบุคคล</h2>

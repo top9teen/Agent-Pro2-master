@@ -9,8 +9,8 @@
 <style type="text/css">
 body {
     /* The image used */
-   background-image: url("access/img/bg/bg-index.jpg");
-	background-color : gray;
+
+	background-color :#f6f6f6;
     /* Full height */
     height: 100%; 
      margin: 0;

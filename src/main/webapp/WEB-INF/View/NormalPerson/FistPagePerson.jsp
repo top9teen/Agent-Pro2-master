@@ -9,8 +9,8 @@
 		style="z-index: 3; width: 320px;" id="mySidebar"> <a
 		href="javascript:void(0)"
 		class="w3-bar-item w3-button w3-border-bottom w3-large"></a>  <a href="javascript:void(0)"
-		class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align"
-		onclick="document.getElementById('id01').style.display='block'">เข้าสู่ระบบ <i class="w3-padding fa fa-pencil"></i>
+		class="w3-bar-item w3-button  w3-button w3-hover-black w3-left-align"
+		onclick="document.getElementById('id01').style.display='block'" style="background-color: #0193d7 ">เข้าสู่ระบบ <i class="w3-padding fa fa-pencil"></i>
 	</a> 
 
 	<a href="#" class="w3-bar-item w3-button"><i
@@ -21,7 +21,7 @@
 		
 	<!-- Modal that pops up when you click on "New Message" -->
 	<div id="id01" class="w3-modal" style="z-index: 4">
-		<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-modal-content w3-animate-zoom w3-card">
 			<div class="w3-container w3-padding w3-sand w3-flat-wisteria">
 				<span onclick="document.getElementById('id01').style.display='none'"
 					class="w3-button w3-red w3-right w3-xxlarge"><i
@@ -86,10 +86,10 @@
 			<h1 align="center"> Welcome To Project For Member</h1><br>
 			
 			<div  class="" style="z-index: 4">
-		<div class="w3-modal-content w3-animate-zoom" style="width:50%"> 
-			<div class="w3-container w3-padding w3-dark-grey">
+		<div class="w3-modal-content w3-animate-zoom w3-card" style="width:50%"> 
+			<div class="w3-container w3-padding" style="background-color: #0193d7">
 				
-				<h2 align="center">เข้าสู่ระบบ</h2>
+				<h2 style="color: white;" align="center">เข้าสู่ระบบ</h2>
 			</div>
 			<form action="gotologin" name="login">
 			<div class="w3-panel" >
