@@ -27,6 +27,8 @@ body {
     color: red;
 }
 
+
+
 </style>
 <jsp:include page="../../Template/Header.jsp"></jsp:include>
 <title>ReFinder</title>
@@ -64,11 +66,19 @@ body {
 <jsp:include page="FormHistory/PageHistory3.jsp"></jsp:include>
 
 
+<%} else if  (result.equals("4")){ %>
+
+<jsp:include page="FormHistory/PageHistory4.jsp"></jsp:include>
+
+
 <%} %>
 
 
 <!-- end class -->
 	</div>
+
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 </body>
+	
+	
 </html>

@@ -2,10 +2,6 @@
     pageEncoding="utf-8"%>
     
  
-<jsp:include page="JsFooter.jsp"></jsp:include>
+
     
-   <div class="footer">
-	<p>© 2018 Exsime International Dot Com Co., Ltd. All Rights Reserved
-	Contact information:<a href="mailto:Project@example.com">Project@example.com</a>.</p>
-	<p><strong>Note:</strong> The footer tag is not supported in Internet Explorer 8 and earlier versions.</p>
-</div>
+<jsp:include page="JsFooter.jsp"></jsp:include>

@@ -51,5 +51,10 @@ public class MemberController {
 		model.addAttribute("save", "3");
 		return "member/CreditForm";
 	}
+	@RequestMapping(value = "/gotopage4")
+	public String gotopage4(Model model) {
+		model.addAttribute("save", "4");
+		return "member/CreditForm";
+	}
 	// end class
 }

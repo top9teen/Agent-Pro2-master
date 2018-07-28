@@ -38,7 +38,8 @@
 			<div class="form-group">
 				<label for="brand">วงเงินที่ท่านต้องการ<span
 					style="color: red;">*</span>:
-				</label> <input type="text" name="lessmoney" placeholder="ใส่จำนวนเงิน" id="monney" value="" class="form-control">
+				</label> <input type="text" name="lessmoney" placeholder="ใส่จำนวนเงิน"
+					id="monney" value="" class="form-control" maxlength="7" min="4">
 			</div>
 			<div class="form-group">
 				<label for="brand">ระยะเวลาที่ต้องการขอกู้<span
@@ -52,16 +53,48 @@
 						<option value="4">4 ปี</option>
 						<option value="5">5 ปี</option>
 						<option value="6">6 ปี</option>
-						
+
 					</optgroup>
 				</select>
 			</div>
 		</div>
 		<div class="panel-footer" align="center"
 			style="background: transparent;">
-			<input type="submit" class="btn btn-success" value="ยืนยัน">&nbsp;
+			<input type="submit" class="btn btn-success btn-lg btn-block"
+				value="ยืนยัน">&nbsp;
 		</div>
 
 	</div>
 </form>
+<script type="text/javascript">
+	function fncSubmit2() {
+		if (document.gotobank.groupType.value == "") {
+			alert('Please input Year');
+			document.gotobank.groupType.focus();
+			return false;
+		}
+		if (document.gotobank.carMake.value == "") {
+			alert('Please input Brand');
+			document.gotobank.carMake.focus();
+			return false;
 
+		}
+		if (document.gotobank.carMake2.value == "") {
+			alert('Please input CarModel');
+			document.gotobank.carMake2.focus();
+			return false;
+		}
+		if (document.gotobank.lessmoney.value == "") {
+			alert('Please input Monny');
+			document.gotobank.lessmoney.focus();
+			return false;
+		}
+
+		if (document.gotobank.lessyear.value == "") {
+			alert('Please input YearLess');
+			document.gotobank.lessyear.focus();
+			return false;
+		}
+	}
+	minlength
+</script>

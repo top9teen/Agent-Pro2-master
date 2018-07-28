@@ -6,7 +6,7 @@
 	bean = (SaveTable1Bean) request.getSession().getAttribute("bean");
 %>
 <form action="gotopage2">
-	<div class="form-section form-position ">
+	<div class="form-section form-position " id="test">
 		<h2 class="fs-title">รายละเอียดการขอกู้</h2>
 		<!-- stap1 -->
 		<div class="row">
@@ -104,12 +104,13 @@
 		<br>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="submit" value="ต่อไป"
-					class="w3-button w3-green w3-deep-blue w3-border w3-right">
-				<input type="button" value="ยกเลิก"
-					class="w3-button w3-green w3-deep-orange w3-border w3-lift">
+				<input  type="submit" value="หน้าต่อไป"
+					class="btn btn-success btn-lg btn-block" >
+				
+					
 			</div>
 		</div>
 	</div>
-	
+
 </form>
+

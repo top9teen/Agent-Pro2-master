@@ -493,10 +493,9 @@
 				</div>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="submit" value="ต่อไป"
-					class="w3-button w3-green w3-deep-blue w3-border w3-right">
-				<input type="button" value="ยกเลิก"
-					class="w3-button w3-green w3-deep-orange w3-border w3-lift">
+				<input  type="submit" value="หน้าต่อไป"
+					class="btn btn-success btn-lg btn-block" >
+				
 			</div>
 		</div>
 		

@@ -10,4 +10,9 @@ public class IndexController {
 		
 		return "index";
 	}
+	@RequestMapping(value = "/222")
+	public String index22() {
+		
+		return "index2";
+	}
 }

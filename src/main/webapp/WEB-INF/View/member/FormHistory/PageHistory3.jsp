@@ -1,7 +1,7 @@
 <%@page import="com.test.Bean.SaveTable1Bean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<form>
+<form action="gotopage4">
 	<div class="w3-modal-content w3-card w3-animate-bottom">
 		<div class="form-section form-position">
 			<h2 class="fs-title-sec2">4. ที่อยู่สำหรับที่จะนำมาขอสินเชื่อ</h2>
@@ -61,7 +61,7 @@
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-12">
 					<div class="form-group">
-						<label>จังหวัด</label><span class="require-red">*</span>
+						<label>ตำบล</label><span class="require-red">*</span>
 						<div class="select select-center paddingTop-1 select-diasbled">
 							<select
 								class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
@@ -109,51 +109,24 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-3 col-sm-3 form-control-field">
+				<div class="col-xs-12 col-md-8 col-sm-3 form-control-field">
 					<div class="form-group">
 						<label class="containerRadio"> <input type="radio"
 							name="radio2" value="1"
 							class="ng-pristine ng-untouched ng-valid ng-not-empty">
 							<span class="checkmark">มีผู้กู้ร่วม</span>
+							
 						</label>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-5 form-control-field">
-
-					<div class="">
-
-						<div class="row">
-							<div
-								class="col-xs-12 col-sm-9 col-sm-offset-1 col-md-8 col-md-offset-2">
-								<div class="select select-center paddingTop-1 select-diasbled">
-									<select
-										class="fontFamily-thonburi fontSize-s ng-pristine ng-untouched ng-valid ng-not-empty"
-										name="coborrowerAmount">
-										<option value="0">โปรดเลือก</option>
-										<option value="1">1 คน</option>
-										<option value="2">2 คน</option>
-										<option value="3">3 คน</option>
-										<option value="4">4 คน</option>
-									</select>
-								</div>
-							</div>
-							
-						</div>
-						
-						
-						
-					</div>
-				</div>
+			
 			</div>
 			<div class="row">
-						<div class="col-md-2 ">
-						<input type="button" value="ยกเลิก"
-					class="w3-button w3-green w3-deep-orange w3-border w3-right ">
-						</div>
-						<div class="col-md-8 "></div>
-						<div class="col-md-2 ">
-				<input type="submit" value="ต่อไป"
-					class="w3-button w3-green w3-deep-blue w3-border w3-lift">
+						
+						
+						<div class="col-md-12 ">
+				<input  type="submit" value="หน้าต่อไป"
+					class="btn btn-success btn-lg btn-block" >
 				
 			</div>
 						</div>
