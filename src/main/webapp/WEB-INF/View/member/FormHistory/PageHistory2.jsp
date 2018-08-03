@@ -1,7 +1,8 @@
 <%@page import="com.test.Bean.SaveTable1Bean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<form action="gotopage3">
+<form action="gotopage3" name="gotopage3"
+	OnSubmit="return fncSubmit3();">
 	<div
 		class="form-section form-position w3-modal-content w3-card w3-animate-bottom">
 		<h2 class="fs-title">1. ข้อมูลส่วนบุคคล</h2>
@@ -12,8 +13,7 @@
 					<label>คำนำหน้า</label><span class="require-red">*</span>
 					<div
 						class="select select-center paddingTop-1 select-prefix select-diasbled">
-						<select
-							class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+						<select class="fontSize-s fontFamily-thonburi  form-control"
 							name="prefix">
 							<option value="">โปรดเลือก</option>
 							<option value="1">นาย</option>
@@ -29,7 +29,7 @@
 
 					<div class="input textAlign-left position-relative">
 						<input type="text" class="form-control" src="src" name="fNameTH"
-							value="">
+							value="" id="fNameTH">
 					</div>
 
 				</div>
@@ -41,7 +41,7 @@
 					<div class="input textAlign-left position-relative">
 						<input type="text"
 							class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-not-empty"
-							src="src" name="lNameTH" value="">
+							src="src" name="lNameTH" value="" id="lNameTH">
 					</div>
 
 				</div>
@@ -53,11 +53,9 @@
 				<div class="form-group">
 					<label>วันเกิด</label><span class="require-red">*</span>
 					<div class="row" style="margin: 0px 0px;">
-						<div
-							class="col-xs-3 col-sm-3 select select-center paddingTop-1 select-diasbled"
+						<div class="col-xs-3 col-sm-3 select select-center paddingTop-1 "
 							style="margin-right: 2.5%;">
-							<select
-								class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="birthDay">
 								<option value="">วัน</option>
 								<option value="01">01</option>
@@ -96,8 +94,7 @@
 						<div
 							class="col-xs-5 select select-center paddingTop-1 select-diasbled"
 							style="width: 45%; margin-right: 2.5%;">
-							<select
-								class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="birthMonth">
 								<option value="">เดือน</option>
 								<option value="01">มกราคม</option>
@@ -114,10 +111,8 @@
 								<option value="12">ธันวาคม</option>
 							</select>
 						</div>
-						<div
-							class="col-xs-3 col-sm-3 select select-center paddingTop-1 select-diasbled">
-							<select
-								class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+						<div class="col-xs-3 col-sm-3 select select-center paddingTop-1 ">
+							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="birthYear"><option value="">ปี</option>
 								<option label="2541" value="2541">2541</option>
 								<option label="2540" value="2540">2540</option>
@@ -252,8 +247,8 @@
 
 						<div class="input textAlign-left position-relative">
 							<input type="text"
-								class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-not-empty"
-								src="src" name="refID">
+								class="form-control fontFamily-thonburi fontSize-s boxShadow-none "
+								src="src" name="refID" id="refID" maxlength="13">
 						</div>
 
 					</div>
@@ -269,7 +264,7 @@
 					<div class="input textAlign-left position-relative">
 						<input type="text"
 							class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-not-empty"
-							src="src" name="mobilePhone">
+							src="src" name="mobilePhone" maxlength="10">
 					</div>
 
 				</div>
@@ -280,7 +275,7 @@
 						<label>อีเมลติดต่อ</label><span class="require-red">*</span>
 
 						<div class="input textAlign-left position-relative">
-							<input type="text"
+							<input type="email"
 								class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-not-empty"
 								src="src" name="email">
 						</div>
@@ -296,8 +291,7 @@
 					<label>ช่วงเวลาที่ให้ติดต่อ (จันทร์-ศุกร์)</label><span
 						class="require-red">*</span>
 					<div class="select select-center paddingTop-1 select-diasbled">
-						<select
-							class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+						<select class="fontSize-s fontFamily-thonburi form-control"
 							name="availableTime">
 							<option value="">โปรดเลือก</option>
 							<option value="8.00-10.00 น.">8.00-10.00 น.</option>
@@ -325,8 +319,7 @@
 					<div class="form-group position-form">
 						<label>อาชีพปัจจุบัน</label><span class="require-red">*</span>
 						<div class="select select-center paddingTop-1 select-diasbled">
-							<select
-								class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="job">
 								<option value="">โปรดเลือก</option>
 								<option value="0">ว่างงาน</option>
@@ -360,16 +353,16 @@
 
 						<div class="input textAlign-left position-relative">
 							<input type="text" placeholder=""
-								class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
-								src="src" name="salary">
+								class="form-control fontFamily-thonburi fontSize-s boxShadow-none "
+								src="src" name="salary" id="salary">
 
 						</div>
 
 					</div>
-					<!-- end ngIf: uInfo.job!=0 && ((uInfo.job>=1 && uInfo.job<=12) || (uInfo.job>=17 && uInfo.job<=19)) -->
+
 				</div>
 			</div>
-			<!-- ngIf: uInfo.job!=0 && ((uInfo.job>=1 && uInfo.job<=12) || (uInfo.job>=17 && uInfo.job<=19)) -->
+
 			<div class="row padding-job ng-scope">
 				<div
 					class="col-md-5 col-md-offset-1 col-sm-5 col-xs-12 col-sm-offset-1">
@@ -383,8 +376,7 @@
 							<div
 								class="col-xs-6 select select-center paddingTop-1 select-diasbled"
 								style="width: 48.75%; margin-right: 2.5%;">
-								<select
-									class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+								<select class="fontSize-s fontFamily-thonburi form-control"
 									name="yearOfService">
 									<option value="">ปี</option>
 									<option value="0">0 ปี</option>
@@ -428,8 +420,7 @@
 							<div
 								class="col-xs-6 select select-center paddingTop-1 select-diasbled"
 								style="width: 48.75%;">
-								<select
-									class="fontSize-s fontFamily-thonburi ng-pristine ng-untouched ng-valid ng-not-empty"
+								<select class="fontSize-s fontFamily-thonburi form-control"
 									name="monthOfService">
 									<option value="">เดือน</option>
 									<option value="0">0 เดือน</option>
@@ -449,9 +440,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- ngIf: uInfo.job == 8 -->
+
 			</div>
-			<!-- end ngIf: uInfo.job!=0 && ((uInfo.job>=1 && uInfo.job<=12) || (uInfo.job>=17 && uInfo.job<=19)) -->
+
 		</div>
 	</div>
 	<br>
@@ -460,7 +451,7 @@
 		class="form-section form-position w3-modal-content w3-card w3-animate-bottom">
 		<h2>3. ประวัติทางการเงิน</h2>
 		<div class="row">
-			
+
 			<div
 				class="col-xs-12 col-md-12  col-sm-offset-1 position-form pos-para-3">
 				<label>เคยค้างค่าผ่อนชำระเกิน 90 วันหรือไม่</label>
@@ -470,38 +461,147 @@
 				<div class="form-group">
 					<input type="radio" name="bureauPaidedStatusPaid" value="3"
 						class="ng-pristine ng-untouched ng-valid ng-not-empty"
-						> <label for="no"
+						checked="checked"> <label for="no"
 						id="bureauPaidedStatusNo">ไม่เคย</label>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-5 form-control-field">
 				<div class="form-group">
 					<input type="radio" name="bureauPaidedStatusPaid" value="2"
-						class="ng-pristine ng-untouched ng-valid ng-not-empty"
-						> <label for="debt"
-						id="bureauPaidedStatusDebt">เคย
+						class="ng-pristine ng-untouched ng-valid ng-not-empty">
+					<label for="debt" id="bureauPaidedStatusDebt">เคย
 						และยังไม่ได้ชำระคืน</label>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 form-control-field">
 				<div class="form-group">
 					<input type="radio" name="bureauPaidedStatusPaid" value="1"
-						class="ng-pristine ng-untouched ng-valid ng-not-empty"
-						> <label for="paid"
-						id="bureauPaidedStatusPaid">เคย
+						class="ng-pristine ng-untouched ng-valid ng-not-empty">
+					<label for="paid" id="bureauPaidedStatusPaid">เคย
 						แต่ชำระคืนแล้ว</label>
 				</div>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input  type="submit" value="หน้าต่อไป"
-					class="btn btn-success btn-lg btn-block" >
-				
+				<input type="submit" value="หน้าต่อไป"
+					class="btn btn-success btn-lg btn-block">
+
 			</div>
 		</div>
-		
+
 	</div>
-			
-		
-	
-	
+
 </form>
+<script type="text/javascript">
+$(document).ready(function() {
+	anElement = new AutoNumeric("#salary");
+	
+	
+});
+	function fncSubmit3() {
+		var fNameTH = document.getElementById('fNameTH').value;
+		var lNameTH = document.getElementById('lNameTH').value;
+		if (document.gotopage3.prefix.value == "") {
+			alert('กรุณา เลือกคำนำหน้าด้วยครับ');
+			document.gotopage3.prefix.focus();
+			return false;
+		}
+		
+		if(!fNameTH.match(/^([a-zA-Zก-๙])+$/i))
+		{
+			alert("กรอกชื่อให้ถูกต้อง");
+			document.getElementById('fNameTH').value = "";
+			return false;
+		}
+		if(!lNameTH.match(/^([a-zA-Zก-๙])+$/i))
+		{
+			alert("กรอกนามสกุลให้ถูกต้อง");
+			document.getElementById('lNameTH').value = "";
+			return false;
+		}
+		
+		if (document.gotopage3.birthDay.value == "") {
+			alert('กรุณา ใส่วันเกิด  ');
+			document.gotopage3.birthDay.focus();
+			return false;
+		}
+		if (document.gotopage3.birthMonth.value == "") {
+			alert('กรุณา ใส่เดือนเกิด ');
+			document.gotopage3.birthMonth.focus();
+			return false;
+		}
+		if (document.gotopage3.birthYear.value == "") {
+			alert('กรุณา ใส่ปีเกิด ');
+			document.gotopage3.birthYear.focus();
+			return false;
+		}
+		if (document.gotopage3.refID.value == "") {
+			alert('กรุณา ใส่เลขประชาชน');
+			document.gotopage3.refID.focus();
+			return false;
+		}
+		if (isNaN(document.gotopage3.mobilePhone.value)) {
+			alert('กรุณา ใส่เบอร์โทร');
+			document.gotopage3.mobilePhone.focus();
+			return false;
+		}
+		if ((document.gotopage3.mobilePhone.value.length < 10)  || (document.gotopage3.mobilePhone.value.length > 10) ) {
+			alert('กรุณา ใส่เบอร์โทรให้ครบ');
+			document.gotopage3.mobilePhone.focus();
+			return false;
+		}
+		if (document.gotopage3.email.value == "") {
+			alert('กรุณา ใส่อีเมลล์');
+			document.gotopage3.email.focus();
+			return false;
+		}
+		
+		if (document.gotopage3.email.value.indexOf('@')==-1) {
+			alert('อีเมล์ของคุณไม่ถูกต้อง');
+			document.gotopage3.email.focus();
+			return false;
+		}
+		if (document.gotopage3.email.value.indexOf('.')==-1) {
+			alert('อีเมล์ของคุณไม่ถูกต้อง');
+			document.gotopage3.email.focus();
+			return false;
+		}
+		
+		if (document.gotopage3.availableTime.value == "") {
+			alert('กรุณา ใส่เวลาที่ติดต่อได้');
+			document.gotopage3.availableTime.focus();
+			return false;
+		}
+		if (document.gotopage3.job.value == "") {
+			alert('กรุณา ใส่อาชีพ');
+			document.gotopage3.job.focus();
+			return false;
+		}
+		if (document.gotopage3.salary.value == "") {
+			alert('กรุณา ใส่เงินเดือน');
+			document.gotopage3.salary.focus();
+			return false;
+		}
+		if (document.gotopage3.yearOfService.value == "") {
+			alert('กรุณา ใส่ปีที่ทำงาน');
+			document.gotopage3.yearOfService.focus();
+			return false;
+		}
+		if (document.gotopage3.monthOfService.value == "") {
+			alert('กรุณา ใส่เดือนที่ทำงาน');
+			document.gotopage3.monthOfService.focus();
+			return false;
+		}
+		if(!checkID(document.gotopage3.refID.value)){
+			alert('รหัสประชาชนไม่ถูกต้อง');
+			return false;
+		}		
+	}
+	function checkID(id) 
+	{ 
+	if(id.length != 13) return false; 
+	for(i=0, sum=0; i < 12; i++) 
+	sum += parseFloat(id.charAt(i))*(13-i); if((11-sum%11)%10!=parseFloat(id.charAt(12))) 
+	return false; return true;}
+
+
+</script>

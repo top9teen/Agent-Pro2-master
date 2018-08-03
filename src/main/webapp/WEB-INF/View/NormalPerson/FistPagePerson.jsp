@@ -50,7 +50,7 @@
 					class="fa fa-remove"></i></span>
 				<h2 align="center">สมัครสมาชิก</h2>
 			</div>
-			<form action="gotoregister">
+			<form action="gotoregister" OnSubmit="return fncregister();" name="register" >
 			<div class="w3-panel">
 			
 				<label>Email</label> <input class="w3-input w3-border w3-margin-bottom"
@@ -107,3 +107,40 @@
 	</div>
 			</div>
 </body>
+
+<script type="text/javascript">
+	function fncregister() {
+		if (document.register.email.value == "") {
+			alert('กรุณา ใส่อีเมลล์');
+			document.register.email.focus();
+			return false;
+		}
+		
+		if (document.register.email.value.indexOf('@')==-1) {
+			alert('อีเมล์ของคุณไม่ถูกต้อง');
+			document.gotopage3.email.focus();
+			return false;
+		}
+		if (document.register.email.value.indexOf('.')==-1) {
+			alert('อีเมล์ของคุณไม่ถูกต้อง');
+			document.register.email.focus();
+			return false;
+		}
+		if (document.register.password.value == "") {
+			alert('กรุณา ใส่รหัสผ่าน');
+			document.register.password.focus();
+			return false;
+		}
+		if (document.register.repassword.value == "") {
+			alert('กรุณา ใส่รหัสผ่านอีกครั้ง');
+			document.register.repassword.focus();
+			return false;
+		}
+		if (document.register.password.value == document.register.repassword.value) {
+			alert('กรุณา ใส่รหัสผ่านให้ถูกต้อง');
+			document.register.repassword.focus();
+			return false;
+		}
+	}
+	
+</script>

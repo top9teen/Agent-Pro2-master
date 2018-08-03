@@ -96,5 +96,5 @@
 			return false;
 		}
 	}
-	minlength
+	
 </script>
