@@ -42,13 +42,13 @@
 				class="col-md-5 col-md-offset-1 col-sm-5 col-xs-12 col-sm-offset-1">
 				<div class="form-group">
 					<label>วงเงินที่ต้องการกู้</label><span class="require-red">*</span>
-					<input type="text" class="form-control"
-						value="<%=bean.getLessmoney()%>" disabled="disabled">
+					<input type="text" name="lessmoney" class="form-control"
+						value="<%=bean.getLessmoney()%>">
 				</div>
 			</div>
 			<div class="col-md-5 col-sm-5 col-xs-12">
 				<div class="form-group">
-					<label>ระยะเวลากู้</label><span class="require-red">*</span> <input
+					<label>ระยะเวลากู้/ปี</label><span class="require-red">*</span> <input
 						type="text" class="form-control" value="<%=bean.getLessyear()%>"
 						disabled="disabled">
 				</div>
@@ -160,7 +160,7 @@
 				
 			    } 
 		 if (checkbox3.checked == true ){
-			 Incheckbox2.value ="ปิดหนี้ธุรกิจ / SME / กิจการ / OD";
+			 Incheckbox3.value ="ปิดหนี้ธุรกิจ / SME / กิจการ / OD";
 				
 			    } 
 		 if (checkbox4.checked == true ){

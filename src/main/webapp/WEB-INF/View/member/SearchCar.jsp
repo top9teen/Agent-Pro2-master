@@ -52,7 +52,7 @@
 						<option value="3">3 ปี</option>
 						<option value="4">4 ปี</option>
 						<option value="5">5 ปี</option>
-						<option value="6">6 ปี</option>
+						
 
 					</optgroup>
 				</select>

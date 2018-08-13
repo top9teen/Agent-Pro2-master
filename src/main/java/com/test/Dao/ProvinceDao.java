@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.test.Bean.AmphurBean;
 import com.test.Bean.DistrictBean;
 import com.test.Bean.ProvinceBean;
+import com.test.Bean.YearCarBean;
 import com.test.util.ConnectDB;
 
 import java.sql.Connection;
@@ -112,6 +113,31 @@ public List<DistrictBean> findAlldistrict(int xxx) throws SQLException {
 		}
 		return list;
 	}
+
+public YearCarBean yrbean(String lessyear) throws SQLException {
+	YearCarBean bean = new YearCarBean();
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+	Connection conn = con.openConnect();
+	try {
+		sql.append(" SELECT yr_percent FROM yearcar  WHERE yr_year = ?  ");
+		prepared = conn.prepareStatement(sql.toString());
+		prepared.setString(1,lessyear);
+		ResultSet rs = prepared.executeQuery();
+
+		while (rs.next()) {
+			bean.setYrPercent(rs.getString("yr_percent"));
+	
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	finally {
+		conn.close();
+	}
+	return bean;
+}
 
 //end class
 }
