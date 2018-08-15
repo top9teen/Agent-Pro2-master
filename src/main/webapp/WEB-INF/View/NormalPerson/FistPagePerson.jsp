@@ -136,7 +136,7 @@
 			document.register.repassword.focus();
 			return false;
 		}
-		if (document.register.password.value == document.register.repassword.value) {
+		if (document.register.password.value != document.register.repassword.value) {
 			alert('กรุณา ใส่รหัสผ่านให้ถูกต้อง');
 			document.register.repassword.focus();
 			return false;

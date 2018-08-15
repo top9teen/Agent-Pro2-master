@@ -1,8 +1,12 @@
-<%@page import="com.test.Bean.SaveTable1Bean"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@page import="com.test.Bean.*"%>
 <form action="gotopage3" name="gotopage3"
 	OnSubmit="return fncSubmit3();">
+	<% IdFormReBean bean = null ;
+	bean = (IdFormReBean) request.getSession().getAttribute("bean");
+	%>
 	<div
 		class="form-section form-position w3-modal-content w3-card w3-animate-bottom">
 		<h2 class="fs-title">1. ข้อมูลส่วนบุคคล</h2>
@@ -277,7 +281,7 @@
 						<div class="input textAlign-left position-relative">
 							<input type="email"
 								class="form-control fontFamily-thonburi fontSize-s boxShadow-none ng-pristine ng-untouched ng-valid ng-not-empty"
-								src="src" name="email">
+								src="src" name="email" disabled="disabled" value="<%=bean.getEmailTest()%>">
 						</div>
 
 					</div>

@@ -20,12 +20,12 @@ public class ConnectDB {
 		return connect;
 	}
 	
-	/*public static void main(String[] args) {
+/*	public static void main(String[] args) {
 	ConnectDB con = new ConnectDB();
 	Connection connect = null;
 	connect = con.openConnect();
 	if (connect != null) {
-		System.out.println("Database Connected.");
+		System.out.println(connect);
 	} else {
 		System.out.println("Database Connect Failed.");
 	}

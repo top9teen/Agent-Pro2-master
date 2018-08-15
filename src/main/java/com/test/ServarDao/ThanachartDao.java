@@ -1,23 +1,25 @@
-package com.test.Dao;
+package com.test.ServarDao;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.stereotype.Repository;
 
 import com.test.Bean.FormMemBean;
 import com.test.Bean.FormregiterBean;
 import com.test.Bean.IdFormReBean;
-import com.test.Bean.LoginBean;
-import com.test.Bean.LoginBeanSimple;
-import com.test.util.ConnectDB;
+import com.test.util.ThanachartDB;
 
 @Repository
-public class FormRegisterDao {
+public class ThanachartDao {
 
+	
+	
 	public void formRegister(FormregiterBean formregiterBean) throws SQLException {
-		ConnectDB con = new ConnectDB();
+		ThanachartDB con = new ThanachartDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		Connection conn = con.openConnect();
@@ -67,7 +69,7 @@ public class FormRegisterDao {
 	}
 	
 	public void formRegisterff(FormMemBean formMemBean) throws SQLException {
-		ConnectDB con = new ConnectDB();
+		ThanachartDB con = new ThanachartDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		Connection conn = con.openConnect();
@@ -97,11 +99,9 @@ public class FormRegisterDao {
 		}
 
 	}
-	
-	
 	public IdFormReBean idform (FormregiterBean formregiterBean) throws SQLException{
 		IdFormReBean bean = new IdFormReBean();
-		ConnectDB con = new ConnectDB();
+		ThanachartDB con = new ThanachartDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		Connection conn = con.openConnect();
@@ -133,5 +133,5 @@ public class FormRegisterDao {
 	}
 	
 	
-	//end class
+	// end class
 }

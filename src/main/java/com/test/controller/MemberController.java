@@ -4,7 +4,6 @@ import java.util.*;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +13,26 @@ import com.test.BankBean.KasikornPriceBean;
 import com.test.BankBean.KrungsriPriceBean;
 import com.test.BankBean.ScbeasyPriceBean;
 import com.test.BankBean.ThanachartPriceBean;
+import com.test.Bean.FormMemBean;
 import com.test.Bean.FormregiterBean;
+import com.test.Bean.IdFormReBean;
+import com.test.Bean.LoginBean;
+import com.test.Bean.LoginBeanSimple;
 import com.test.Bean.SaveTable1Bean;
 import com.test.Bean.YearCarBean;
 import com.test.Dao.FormRegisterDao;
+import com.test.Dao.LoginDao;
 import com.test.Dao.ProvinceDao;
+import com.test.Dao.RegisterDao;
+import com.test.ServarDao.KasikornDao;
+import com.test.ServarDao.KrungsriDao;
+import com.test.ServarDao.ScbeasyDao;
+import com.test.ServarDao.ThanachartDao;
 import com.test.server.KasikornServer;
 import com.test.server.KrungsriServer;
 import com.test.server.ScbeasyServer;
 import com.test.server.ThanachartServer;
+
 
 @Controller
 public class MemberController {
@@ -38,13 +48,53 @@ public class MemberController {
 	ProvinceDao provinceDao;
 	@Autowired
 	FormRegisterDao formRegisterDao;
-
-	
+	@Autowired 
+	KasikornDao kasikornDao;
+	@Autowired
+	KrungsriDao krungsriDao;
+	@Autowired
+	ScbeasyDao scbeasyDao;
+	@Autowired
+	ThanachartDao thanachartDao;
+	@Autowired
+	LoginDao loginDao;
+	@Autowired 
+	RegisterDao registerDao;
 
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("save", "1");
 		return "member/welcome";
+	}
+	@RequestMapping(value="/gotologin")
+	public String login(String email , String password, Model model, HttpServletRequest request) {
+		String page="" ;
+		LoginBean bean =new LoginBean();
+		LoginBeanSimple beansim =new LoginBeanSimple();
+		beansim.setEmail(email);
+		beansim.setPassword(password);
+		try {
+			bean=loginDao.login(beansim);
+			if(bean.getLoEmail() != null) {
+				if(bean.getLoStatus().equals("1")) {
+					page = "admin";
+				}
+				else if (bean.getLoStatus().equals("2")) {
+					model.addAttribute("save", "1");
+					page = "member/welcome";
+					emailBean = bean.getLoEmail();
+				}
+				
+				
+			}
+			else {
+				page = "index";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return page;
 	}
 
 	@RequestMapping(value = "/gotobank")
@@ -99,6 +149,7 @@ public class MemberController {
 	@RequestMapping(value = "/gotopage2")
 	public String gotopage2(Model model, String lessmoney, String Incheckbox1, String Incheckbox2, String Incheckbox3,
 			String Incheckbox4,HttpServletRequest request) {
+		IdFormReBean bean = new IdFormReBean();
 		lessmoneyBean = lessmoney;
 		Incheckbox1Bean = Incheckbox1;
 		Incheckbox2Bean = Incheckbox2;
@@ -108,7 +159,8 @@ public class MemberController {
 		 * System.out.println(Incheckbox1Bean); System.out.println(Incheckbox2Bean);
 		 * System.out.println(Incheckbox3Bean); System.out.println(Incheckbox4Bean);
 		 */
-	
+		bean.setEmailTest(emailBean);
+		request.getSession().setAttribute("bean", bean);
 		model.addAttribute("save", "2");
 		return "member/CreditForm";
 	}
@@ -125,7 +177,6 @@ public class MemberController {
 		birthYearBean = birthYear;
 		refIDBean = refID;
 		mobilePhoneBean = mobilePhone;
-		emailBean = email;
 		availableTimeBean = availableTime;
 		jobBean = job;
 		salaryBean = salary;
@@ -146,7 +197,7 @@ public class MemberController {
 	public String propertyProjectNameBean, provinceBean, amphurBean, districtBean, RadioBean, prefix2Bean, fname2Bean,
 			lname2Bean, birthDay2Bean, birthMonth2Bean, birthYear2Bean, talaphone2Bean, email2Bean, job2Bean,
 			salary2Bean, yearOfService2Bean, monthOfService2Bean;
-	
+	public int idsee ;
 	public String groupTypeBean, carMakeBean, carMake2Bean, lessmoneyBean, lessyearBean, typeBankBean;
 	public String Incheckbox1Bean, Incheckbox2Bean, Incheckbox3Bean, Incheckbox4Bean;
 	public String prefixBean, fNameTHBean, lNameTHBean, birthDayBean, birthMonthBean, birthYearBean, refIDBean,
@@ -158,7 +209,8 @@ public class MemberController {
 			String Radio, String prefix2, String fname2, String lname2, String birthDay2, String birthMonth2,
 			String birthYear2, String talaphone2, String email2, String job2, String salary2, String yearOfService2,
 			String monthOfService2,HttpServletRequest request)  throws SQLException{
-
+		FormMemBean membean = new FormMemBean();
+	
 		propertyProjectNameBean = propertyProjectName;
 		provinceBean =province;
 		amphurBean = amphur;
@@ -208,9 +260,82 @@ public class MemberController {
 		formregiterBean.setFoDistrict(districtBean);
 		formregiterBean.setFoRadio(RadioBean);
 		formregiterBean.setFoDate(new Date());
-		
+		membean.setMePrefix2(prefix2Bean);
+		membean.setMeFname2(fname2Bean);
+		membean.setMeLname2(lname2Bean);
+		membean.setMeBirthDay2(birthDay2Bean);
+		membean.setMeBirthMonth2(birthMonth2Bean);
+		membean.setMeBirthYear2(birthYear2Bean);
+		membean.setMeTalaphone2(talaphone2Bean);
+		membean.setMeEmail2(email2Bean);
+		membean.setMeJob2(job2Bean);
+		membean.setMeSalary2(salary2Bean);
+		membean.setMeYearOfService2(yearOfService2Bean);
+		membean.setMeMonthOfService2(monthOfService2Bean);
 		
 		formRegisterDao.formRegister(formregiterBean);
+		if(RadioBean.equals("1")) {
+			IdFormReBean bean2 = new IdFormReBean();
+			bean2=formRegisterDao.idform(formregiterBean);
+			idsee=bean2.getFoId();
+			membean.setMeId(bean2.getFoId());
+			
+			formRegisterDao.formRegisterff(membean);	
+		}
+		else {	
+		}
+		
+		// include type Blank 
+		if(typeBankBean.equals("ka1")) {
+			String a = Integer.toString(idsee);
+			formregiterBean.setFoTypebank(a);
+			kasikornDao.formRegister(formregiterBean);
+			if(RadioBean.equals("1")) {
+				IdFormReBean bean2 = new IdFormReBean();
+				bean2=kasikornDao.idform(formregiterBean);
+				membean.setMeId(bean2.getFoId());
+				kasikornDao.formRegisterff(membean);
+			}
+			
+		} 
+		else if (typeBankBean.equals("kr1")) {
+			String a = Integer.toString(idsee);
+			formregiterBean.setFoTypebank(a);
+			krungsriDao.formRegister(formregiterBean);
+			if(RadioBean.equals("1")) {
+				IdFormReBean bean2 = new IdFormReBean();
+				bean2=krungsriDao.idform(formregiterBean);
+				membean.setMeId(bean2.getFoId());
+				krungsriDao.formRegisterff(membean);
+			}
+			
+			
+		}else if (typeBankBean.equals("th1")) {
+			String a = Integer.toString(idsee);
+			formregiterBean.setFoTypebank(a);
+			thanachartDao.formRegister(formregiterBean);
+			if(RadioBean.equals("1")) {
+				IdFormReBean bean2 = new IdFormReBean();
+				bean2=thanachartDao.idform(formregiterBean);
+				membean.setMeId(bean2.getFoId());
+				thanachartDao.formRegisterff(membean);
+			}
+			
+			
+		}else if (typeBankBean.equals("sc1")) {
+			String a = Integer.toString(idsee);
+			formregiterBean.setFoTypebank(a);
+			scbeasyDao.formRegister(formregiterBean);
+			if(RadioBean.equals("1")) {
+				IdFormReBean bean2 = new IdFormReBean();
+				bean2=scbeasyDao.idform(formregiterBean);
+				membean.setMeId(bean2.getFoId());
+				scbeasyDao.formRegisterff(membean);
+			}
+			
+		}
+
+		// Session
 		request.getSession().setAttribute("kabean", formregiterBean);
 		model.addAttribute("save", "1");
 		return "member/welcome";

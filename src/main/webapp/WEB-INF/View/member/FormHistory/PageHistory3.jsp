@@ -94,7 +94,7 @@
 
 
 				<div class="col-md-12 ">
-					<input type="submit" value="หน้าต่อไป"
+					<input type="submit" value="ส่งข้อมูล"
 						class="btn btn-success btn-lg btn-block">
 
 				</div>
