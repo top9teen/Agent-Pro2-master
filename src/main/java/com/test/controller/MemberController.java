@@ -24,6 +24,7 @@ import com.test.Dao.FormRegisterDao;
 import com.test.Dao.LoginDao;
 import com.test.Dao.ProvinceDao;
 import com.test.Dao.RegisterDao;
+import com.test.Dao.SelTableDao;
 import com.test.ServarDao.KasikornDao;
 import com.test.ServarDao.KrungsriDao;
 import com.test.ServarDao.ScbeasyDao;
@@ -60,10 +61,13 @@ public class MemberController {
 	LoginDao loginDao;
 	@Autowired 
 	RegisterDao registerDao;
+	@Autowired
+	SelTableDao selTableDao;
 
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("save", "1");
+		
 		return "member/welcome";
 	}
 	@RequestMapping(value="/gotologin")
@@ -339,6 +343,26 @@ public class MemberController {
 		request.getSession().setAttribute("kabean", formregiterBean);
 		model.addAttribute("save", "1");
 		return "member/welcome";
+	}
+	@RequestMapping(value = "/gotoCreditAnalysis")
+	public String tableTest(HttpServletRequest requst)  throws SQLException{
+		List<FormregiterBean> list = new ArrayList<>();
+	list= selTableDao.selre(emailBean);
+
+	requst.getSession().setAttribute("listUser", list);
+		return "member/CreditAnalysis";
+	}
+	
+	@RequestMapping(value = "/gotoSelPrivice")
+	public String tableTest2(HttpServletRequest requst,int regid)  throws SQLException{
+		FormMemBean beanmem = new FormMemBean();
+		FormregiterBean beanres = new FormregiterBean();
+		
+		beanmem = selTableDao.selre2(regid);
+		beanres = selTableDao.selre3(regid);
+    requst.getSession().setAttribute("beanres", beanres);
+	requst.getSession().setAttribute("beanmem", beanmem);
+		return "member/CreditAnalysis";
 	}
 	// end class
 }

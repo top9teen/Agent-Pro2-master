@@ -12,7 +12,7 @@
 		class="w3-bar-item w3-button w3-hide-large w3-large">ยกเลิก <i
 		class="fa fa-remove"></i></a> 
 	<a href="welcome" class="w3-bar-item w3-button"><i
-		class="fa fa-paper-plane w3-margin-right"></i>วิเคราะห์สินเชื่อ</a> <a href="#"
+		class="fa fa-paper-plane w3-margin-right"></i>วิเคราะห์สินเชื่อ</a> <a href="gotoCreditAnalysis"
 		class="w3-bar-item w3-button"><i
 		class="fa fa-hourglass-end w3-margin-right"></i>รายการสินเชื่อ</a> <a href="#"
 		class="w3-bar-item w3-button"><i
