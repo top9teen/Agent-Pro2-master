@@ -13,13 +13,17 @@ import com.test.BankBean.KasikornPriceBean;
 import com.test.BankBean.KrungsriPriceBean;
 import com.test.BankBean.ScbeasyPriceBean;
 import com.test.BankBean.ThanachartPriceBean;
+import com.test.Bean.AmphurBean;
+import com.test.Bean.DistrictBean;
 import com.test.Bean.FormMemBean;
 import com.test.Bean.FormregiterBean;
 import com.test.Bean.IdFormReBean;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
+import com.test.Bean.ProvinceBean;
 import com.test.Bean.SaveTable1Bean;
 import com.test.Bean.YearCarBean;
+import com.test.Dao.CkDao;
 import com.test.Dao.FormRegisterDao;
 import com.test.Dao.LoginDao;
 import com.test.Dao.ProvinceDao;
@@ -63,6 +67,8 @@ public class MemberController {
 	RegisterDao registerDao;
 	@Autowired
 	SelTableDao selTableDao;
+	@Autowired
+	CkDao ckDao;
 
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
@@ -209,16 +215,18 @@ public class MemberController {
 			bureauPaidedStatusPaidBean;
 
 	@RequestMapping(value = "/register")
-	public String register(Model model, String propertyProjectName, String province, String amphur, String district,
+	public String register(Model model, String propertyProjectName, int province, int amphur, int district,
 			String Radio, String prefix2, String fname2, String lname2, String birthDay2, String birthMonth2,
 			String birthYear2, String talaphone2, String email2, String job2, String salary2, String yearOfService2,
-			String monthOfService2,HttpServletRequest request)  throws SQLException{
+			String monthOfService2,HttpServletRequest request,AmphurBean amp ,ProvinceBean pro ,DistrictBean dis)  throws SQLException{
 		FormMemBean membean = new FormMemBean();
-	
+		amp=ckDao.amphur(amphur);
+		pro=ckDao.province(province);
+		dis=ckDao.dis(district);
 		propertyProjectNameBean = propertyProjectName;
-		provinceBean =province;
-		amphurBean = amphur;
-		districtBean = district;
+		provinceBean =pro.getProvinceName();
+		amphurBean = amp.getAmphurName();
+		districtBean = dis.getDistrictName();
 		RadioBean = Radio;
 		prefix2Bean =prefix2;
 		fname2Bean = fname2;

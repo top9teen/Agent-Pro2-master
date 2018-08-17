@@ -20,9 +20,9 @@
 						<select class="fontSize-s fontFamily-thonburi  form-control"
 							name="prefix">
 							<option value="">โปรดเลือก</option>
-							<option value="1">นาย</option>
-							<option value="2">นางสาว</option>
-							<option value="3">นาง</option>
+							<option value="นาย">นาย</option>
+							<option value="นางสาว">นางสาว</option>
+							<option value="นาง">นาง</option>
 						</select>
 					</div>
 				</div>
@@ -101,18 +101,18 @@
 							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="birthMonth">
 								<option value="">เดือน</option>
-								<option value="01">มกราคม</option>
-								<option value="02">กุมภาพันธ์</option>
-								<option value="03">มีนาคม</option>
-								<option value="04">เมษายน</option>
-								<option value="05">พฤษภาคม</option>
-								<option value="06">มิถุนายน</option>
-								<option value="07">กรกฎาคม</option>
-								<option value="08">สิงหาคม</option>
-								<option value="09">กันยายน</option>
-								<option value="10">ตุลาคม</option>
-								<option value="11">พฤศจิกายน</option>
-								<option value="12">ธันวาคม</option>
+								<option value="มกราคม">มกราคม</option>
+								<option value="กุมภาพันธ์">กุมภาพันธ์</option>
+								<option value="มีนาคม">มีนาคม</option>
+								<option value="เมษายน">เมษายน</option>
+								<option value="พฤษภาคม">พฤษภาคม</option>
+								<option value="มิถุนายน">มิถุนายน</option>
+								<option value="กรกฎาคม">กรกฎาคม</option>
+								<option value="สิงหาคม">สิงหาคม</option>
+								<option value="กันยายน">กันยายน</option>
+								<option value="ตุลาคม">ตุลาคม</option>
+								<option value="พฤศจิกายน">พฤศจิกายน</option>
+								<option value="ธันวาคม">ธันวาคม</option>
 							</select>
 						</div>
 						<div class="col-xs-3 col-sm-3 select select-center paddingTop-1 ">
@@ -326,26 +326,26 @@
 							<select class="fontSize-s fontFamily-thonburi form-control"
 								name="job">
 								<option value="">โปรดเลือก</option>
-								<option value="0">ว่างงาน</option>
-								<option value="1">ข้าราชการ</option>
-								<option value="2">ทหาร/ตำรวจ</option>
-								<option value="3">นักการเมือง</option>
-								<option value="4">พนักงานรัฐวิสาหกิจ</option>
-								<option value="5">พนักงานสถาบันการเงิน</option>
-								<option value="6">พนักงานบริษัท/ห้างหุ้นส่วน</option>
-								<option value="7">พนักงานสัญญาจ้าง</option>
-								<option value="8">เจ้าของกิจการ</option>
-								<option value="9">วิชาชีพอิสระ(มีใบอนุญาต)</option>
-								<option value="10">อาชีพอิสระ(ไม่มี 50 ทวิ)</option>
-								<option value="11">อาชีพอิสระ(มี 50 ทวิ)</option>
-								<option value="12">ผู้มีรายได้หลักจากค่าคอมมิชชั่น</option>
-								<option value="13">พ่อบ้าน/แม่บ้าน</option>
-								<option value="14">เกษียณ</option>
-								<option value="15">นักเรียน/นักศึกษา</option>
-								<option value="16">พระภิกษุ</option>
-								<option value="17">นักบิน</option>
-								<option value="18">แพทย์</option>
-								<option value="19">ผู้พิพากษา</option>
+								<option value="ว่างงาน">ว่างงาน</option>
+								<option value="ข้าราชการ">ข้าราชการ</option>
+								<option value="ทหาร/ตำรวจ">ทหาร/ตำรวจ</option>
+								<option value="นักการเมือง">นักการเมือง</option>
+								<option value="พนักงานรัฐวิสาหกิจ">พนักงานรัฐวิสาหกิจ</option>
+								<option value="พนักงานรัฐวิสาหกิจ">พนักงานสถาบันการเงิน</option>
+								<option value="พนักงานบริษัท/ห้างหุ้นส่วน">พนักงานบริษัท/ห้างหุ้นส่วน</option>
+								<option value="พนักงานสัญญาจ้าง">พนักงานสัญญาจ้าง</option>
+								<option value="เจ้าของกิจการ">เจ้าของกิจการ</option>
+								<option value="เจ้าของกิจการ">วิชาชีพอิสระ(มีใบอนุญาต)</option>
+								<option value="อาชีพอิสระ(ไม่มี 50 ทวิ)">อาชีพอิสระ(ไม่มี 50 ทวิ)</option>
+								<option value="อาชีพอิสระ(มี 50 ทวิ)">อาชีพอิสระ(มี 50 ทวิ)</option>
+								<option value="ผู้มีรายได้หลักจากค่าคอมมิชชั่น">ผู้มีรายได้หลักจากค่าคอมมิชชั่น</option>
+								<option value="พ่อบ้าน/แม่บ้าน">พ่อบ้าน/แม่บ้าน</option>
+								<option value="เกษียณ">เกษียณ</option>
+								<option value="นักเรียน/นักศึกษา">นักเรียน/นักศึกษา</option>
+								<option value="พระภิกษุ">พระภิกษุ</option>
+								<option value="นักบิน">นักบิน</option>
+								<option value="แพทย์">แพทย์</option>
+								<option value="ผู้พิพากษา">ผู้พิพากษา</option>
 							</select>
 						</div>
 					</div>
@@ -463,7 +463,7 @@
 			<div
 				class="col-xs-12 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 form-control-field">
 				<div class="form-group">
-					<input type="radio" name="bureauPaidedStatusPaid" value="3"
+					<input type="radio" name="bureauPaidedStatusPaid" value="ไม่เคย"
 						class="ng-pristine ng-untouched ng-valid ng-not-empty"
 						checked="checked"> <label for="no"
 						id="bureauPaidedStatusNo">ไม่เคย</label>
@@ -471,7 +471,8 @@
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-5 form-control-field">
 				<div class="form-group">
-					<input type="radio" name="bureauPaidedStatusPaid" value="2"
+					<input type="radio" name="bureauPaidedStatusPaid" value="เคย
+						และยังไม่ได้ชำระคืน"
 						class="ng-pristine ng-untouched ng-valid ng-not-empty">
 					<label for="debt" id="bureauPaidedStatusDebt">เคย
 						และยังไม่ได้ชำระคืน</label>
@@ -479,7 +480,8 @@
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 form-control-field">
 				<div class="form-group">
-					<input type="radio" name="bureauPaidedStatusPaid" value="1"
+					<input type="radio" name="bureauPaidedStatusPaid" value="เคย
+						แต่ชำระคืนแล้ว"
 						class="ng-pristine ng-untouched ng-valid ng-not-empty">
 					<label for="paid" id="bureauPaidedStatusPaid">เคย
 						แต่ชำระคืนแล้ว</label>
