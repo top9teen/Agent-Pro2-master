@@ -25,7 +25,7 @@ public class KasikornDao {
 		Connection conn = con.openConnect();
 		try {
 			sql.append(
-					" INSERT INTO formregiter (fo_groupType,fo_carMake,fo_carMake2,fo_lessmoney,fo_lessyear,fo_typebank,fo_checkbox1,fo_checkbox2,fo_checkbox3,fo_checkbox4,fo_prefix,fo_fNameTH,fo_lNameTH,fo_birthDay,fo_birthMonth,fo_birthYear,fo_refID,fo_mobilePhone,fo_email,fo_availableTime,fo_job,fo_salary,fo_yearOfService,fo_monthOfService,fo_bureauPaidedStatusPaid,fo_propertyProjectName,fo_province,fo_amphur,fo_district,fo_Radio,fo_date)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  ");
+					" INSERT INTO formregiter (fo_groupType,fo_carMake,fo_carMake2,fo_lessmoney,fo_lessyear,fo_typebank,fo_checkbox1,fo_checkbox2,fo_checkbox3,fo_checkbox4,fo_prefix,fo_fNameTH,fo_lNameTH,fo_birthDay,fo_birthMonth,fo_birthYear,fo_refID,fo_mobilePhone,fo_email,fo_availableTime,fo_job,fo_salary,fo_yearOfService,fo_monthOfService,fo_bureauPaidedStatusPaid,fo_propertyProjectName,fo_province,fo_amphur,fo_district,fo_Radio,fo_date,fo_reMonny)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  ");
 			prepared = conn.prepareStatement(sql.toString());
 			prepared.setString(1,formregiterBean.getFoGroupType());
 			prepared.setString(2, formregiterBean.getFoCarMake());
@@ -58,6 +58,7 @@ public class KasikornDao {
 			prepared.setString(29, formregiterBean.getFoDistrict());
 			prepared.setString(30, formregiterBean.getFoRadio());
 			prepared.setDate(31, new Date(formregiterBean.getFoDate().getTime()));
+			prepared.setInt(32, formregiterBean.getFoReMonny());
 			prepared.executeUpdate();
 
 		} catch (Exception e) {

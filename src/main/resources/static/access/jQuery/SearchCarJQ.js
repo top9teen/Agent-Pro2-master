@@ -1,8 +1,6 @@
 		$(document).ready(function() {
-			
-			
-// 			$('.groupType').select2();
 			anElement = new AutoNumeric("#monney");
+			
 			
 			
 			$.ajax({

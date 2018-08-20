@@ -109,7 +109,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/gotobank")
 	public String gotocredit(String groupType, String carMake, String carMake2, String lessmoney, String lessyear,
-			HttpServletRequest request, Model model) throws SQLException {
+			HttpServletRequest request, Model model,String mos) throws SQLException {
 		KasikornPriceBean kabean = new KasikornPriceBean();
 		KrungsriPriceBean krbean = new KrungsriPriceBean();
 		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
@@ -120,6 +120,11 @@ public class MemberController {
 		carMake2Bean = carMake2;
 		lessmoneyBean = lessmoney;
 		lessyearBean = lessyear;
+		//MoTesBean = MoTes;
+		int bos = Integer.valueOf(mos);
+		
+		MoTesBean =bos;
+	
 		kabean = kasikornServer.checkpriceKa(groupType, carMake2);
 		krbean = krungsriServer.checkpricekr(groupType, carMake2);
 		scbean = scbeasyServer.checkpricesc(groupType, carMake2);
@@ -130,6 +135,7 @@ public class MemberController {
 		request.getSession().setAttribute("scbean", scbean);
 		request.getSession().setAttribute("thbean", thbean);
 		request.getSession().setAttribute("yebean", yebean);
+	
 		return "member/SelBank";
 	}
 
@@ -165,6 +171,7 @@ public class MemberController {
 		Incheckbox2Bean = Incheckbox2;
 		Incheckbox3Bean = Incheckbox3;
 		Incheckbox4Bean = Incheckbox4;
+		
 		/*
 		 * System.out.println(Incheckbox1Bean); System.out.println(Incheckbox2Bean);
 		 * System.out.println(Incheckbox3Bean); System.out.println(Incheckbox4Bean);
@@ -172,6 +179,7 @@ public class MemberController {
 		bean.setEmailTest(emailBean);
 		request.getSession().setAttribute("bean", bean);
 		model.addAttribute("save", "2");
+		
 		return "member/CreditForm";
 	}
 
@@ -207,7 +215,7 @@ public class MemberController {
 	public String propertyProjectNameBean, provinceBean, amphurBean, districtBean, RadioBean, prefix2Bean, fname2Bean,
 			lname2Bean, birthDay2Bean, birthMonth2Bean, birthYear2Bean, talaphone2Bean, email2Bean, job2Bean,
 			salary2Bean, yearOfService2Bean, monthOfService2Bean;
-	public int idsee ;
+	public int idsee ,MoTesBean;
 	public String groupTypeBean, carMakeBean, carMake2Bean, lessmoneyBean, lessyearBean, typeBankBean;
 	public String Incheckbox1Bean, Incheckbox2Bean, Incheckbox3Bean, Incheckbox4Bean;
 	public String prefixBean, fNameTHBean, lNameTHBean, birthDayBean, birthMonthBean, birthYearBean, refIDBean,
@@ -284,7 +292,7 @@ public class MemberController {
 		membean.setMeSalary2(salary2Bean);
 		membean.setMeYearOfService2(yearOfService2Bean);
 		membean.setMeMonthOfService2(monthOfService2Bean);
-		
+		formregiterBean.setFoReMonny(MoTesBean);
 		formRegisterDao.formRegister(formregiterBean);
 		if(RadioBean.equals("1")) {
 			IdFormReBean bean2 = new IdFormReBean();

@@ -65,9 +65,23 @@
 		</div>
 
 	</div>
+	
+	<input type="text" value="" id="MoTes" name="mos" style="display: none;">
 </form>
+
+
 <script type="text/javascript">
+
+
 	function fncSubmit2() {
+	
+		var monney = document.getElementById('monney').value;
+		var ssd = document.getElementById('MoTes').value;
+		ssd = monney;
+		
+		 var res = ssd.replace(/,|.00|/gi, "");
+		 document.getElementById("MoTes").value = res;
+		
 		if (document.gotobank.groupType.value == "") {
 			alert('Please input Year');
 			document.gotobank.groupType.focus();
@@ -95,6 +109,7 @@
 			document.gotobank.lessyear.focus();
 			return false;
 		}
+		
 	}
 	
 </script>
