@@ -2,6 +2,9 @@ package com.test.controller;
 
 import java.util.*;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import com.test.Bean.AmphurBean;
 import com.test.Bean.DistrictBean;
 import com.test.Bean.FormMemBean;
 import com.test.Bean.FormregiterBean;
+import com.test.Bean.GatherBean;
 import com.test.Bean.IdFormReBean;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
@@ -24,6 +28,7 @@ import com.test.Bean.ProvinceBean;
 import com.test.Bean.SaveTable1Bean;
 import com.test.Bean.YearCarBean;
 import com.test.Dao.CkDao;
+import com.test.Dao.FormMonnyDao;
 import com.test.Dao.FormRegisterDao;
 import com.test.Dao.LoginDao;
 import com.test.Dao.ProvinceDao;
@@ -69,7 +74,8 @@ public class MemberController {
 	SelTableDao selTableDao;
 	@Autowired
 	CkDao ckDao;
-
+	@Autowired
+	FormMonnyDao formMonnyDao;
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("save", "1");
@@ -78,9 +84,23 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/ddd")
-	public String ddd(Model model) {
-	 
+	public String ddd(Model model,HttpServletRequest res) throws SQLException, ParseException {
+		List<GatherBean> list = new ArrayList<>();
+		String email = emailBean; 
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = sdf.parse("14/11/2018");
+		Calendar cal =  Calendar.getInstance();
+		today = new Date();
+		cal.setTime(today);
+		int M = 0 ,D =0;
+		M = cal.get(Calendar.MONTH);
+		D =cal.get(Calendar.DATE);
+		if(D <= 5 ) {
+			list = formMonnyDao.branddd(email, M+1,D);
+		}
 		
+		
+		res.getSession().setAttribute("list", list);
 		return "member/FormUser";
 	}
 	
