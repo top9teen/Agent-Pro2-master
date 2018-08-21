@@ -57,7 +57,11 @@ Integer a =0 ;
 		</div>
 
 		<div class="w3-modal-content w3-card w3-animate-bottom">
-
+<div align="right">
+<form name="welcome2" action="ddd" method="post">
+<button  class="w3-btn w3-green w3-deep-green w3-border " onclick="ddd">จ่ายงวด</button>
+</form>
+</div>
  <input id="myInput"  style="width:30%"align="right" type="text" placeholder="ค้นหา...."
 						class="w3-input w3-border w3-light-grey">
 						<input type="hidden" id="regid"name="regid" id="regid">
@@ -119,6 +123,9 @@ Integer a =0 ;
 
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 	<script type="text/javascript">
+	
+
+	
 	function gotoUpdate(filter) {
 		 document.getElementById("regid").value = filter;
 		var simpleTestBean = { "xxx" :  $('#regid').val()};

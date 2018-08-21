@@ -76,6 +76,14 @@ public class MemberController {
 		
 		return "member/welcome";
 	}
+	
+	@RequestMapping(value = "/ddd")
+	public String ddd(Model model) {
+	 
+		
+		return "member/FormUser";
+	}
+	
 	@RequestMapping(value="/gotologin")
 	public String login(String email , String password, Model model, HttpServletRequest request) {
 		String page="" ;
