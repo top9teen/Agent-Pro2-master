@@ -54,7 +54,7 @@
 			<div class="w3-panel">
 			
 				<label>Email</label> <input class="w3-input w3-border w3-margin-bottom"
-					type="email" name="email"> <label>Password</label> <input
+					type="text" name="email"> <label>Password</label> <input
 					class="w3-input w3-border w3-margin-bottom" type="text" name="password"> 
 				<label>Re-Password</label> <input
 					class="w3-input w3-border w3-margin-bottom" type="text" name = "repassword">
@@ -105,7 +105,7 @@
 			</form>
 		</div>
 	</div>
-			</div>
+	</div>
 </body>
 
 <script type="text/javascript">
@@ -116,13 +116,13 @@
 			return false;
 		}
 		
-		if (document.register.email.value.indexOf('@')==-1) {
-			alert('อีเมล์ของคุณไม่ถูกต้อง');
-			document.gotopage3.email.focus();
+		if (document.register.email.value.indexOf('@')==-1 ) {
+			alert('ใส่ Gmail หรือ Hotmail เท่านั้น');
+			document.register.email.focus();
 			return false;
 		}
-		if (document.register.email.value.indexOf('.')==-1) {
-			alert('อีเมล์ของคุณไม่ถูกต้อง');
+		if (document.register.email.value.indexOf('.')==-1  ) {
+			alert('ใส่ .com หรือ  .co.th เท่านั้น');
 			document.register.email.focus();
 			return false;
 		}

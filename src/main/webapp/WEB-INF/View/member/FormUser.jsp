@@ -85,7 +85,7 @@ body {
 						<td><%=list.get(i).getGaPrie()%> บาท</td>
 						<td><%=list.get(i).getGaFistPeriod()%></td>
 						<td><%=list.get(i).getGaLastPeriod()%></td>
-						<td align="center"><a  onclick="gotoUpdate('<%=list.get(i).getGaId()%>')"><span
+						<td align="center"><a  onclick="gotohos1('<%=list.get(i).getGaId()%>')"><span
 								class="glyphicon glyphicon-search"> </span></a></td> 
 
 
@@ -102,7 +102,30 @@ body {
 	</div>
 
 
-
+	<script type="text/javascript">
+	
+	function gotoUpdate(filter) {
+		 document.getElementById("regid").value = filter;
+		var simpleTestBean = { "xxx" :  $('#regid').val()};
+		 
+		$.ajax({
+			type : "POST",
+			url : "/MBS",
+			data: JSON.stringify(simpleTestBean) ,
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function(msg) {
+				console.log('Success')
+			
+			}
+		});
+		/* document.getElementById("regid").value = filter;
+		document.welcome.action = "gotoSelPrivice";
+		document.welcome.submit(); */
+		
+	}
+	
+	</script>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 </body>
 </html>

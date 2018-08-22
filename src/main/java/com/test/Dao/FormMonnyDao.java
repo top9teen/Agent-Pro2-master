@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.test.Bean.GatherBean;
-import com.test.Bean.YearBean;
+
 import com.test.util.KasikornDB;
 
 @Repository
@@ -46,6 +46,7 @@ public class FormMonnyDao {
 					bean.setGaDay(rs.getInt("ga_day"));
 					bean.setGaMont(rs.getInt("ga_mont"));
 					bean.setGayear(rs.getInt("ga_year"));
+					bean.setGaUser(rs.getInt("ga_user"));
 					list.add(bean);
 				}
 			}

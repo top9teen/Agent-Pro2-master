@@ -7,11 +7,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.paypal.api.payments.Links;
+import com.paypal.api.payments.Payment;
+import com.paypal.base.rest.PayPalRESTException;
 import com.test.BankBean.KasikornPriceBean;
 import com.test.BankBean.KrungsriPriceBean;
 import com.test.BankBean.ScbeasyPriceBean;
@@ -26,6 +35,7 @@ import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
 import com.test.Bean.ProvinceBean;
 import com.test.Bean.SaveTable1Bean;
+import com.test.Bean.SimpleTestBean;
 import com.test.Bean.YearCarBean;
 import com.test.Dao.CkDao;
 import com.test.Dao.FormMonnyDao;
@@ -38,10 +48,14 @@ import com.test.ServarDao.KasikornDao;
 import com.test.ServarDao.KrungsriDao;
 import com.test.ServarDao.ScbeasyDao;
 import com.test.ServarDao.ThanachartDao;
+import com.test.config.PaypalPaymentIntent;
+import com.test.config.PaypalPaymentMethod;
 import com.test.server.KasikornServer;
 import com.test.server.KrungsriServer;
 import com.test.server.ScbeasyServer;
 import com.test.server.ThanachartServer;
+import com.test.service.PaypalService;
+import com.test.util.URLUtils;
 
 
 @Controller
@@ -76,12 +90,72 @@ public class MemberController {
 	CkDao ckDao;
 	@Autowired
 	FormMonnyDao formMonnyDao;
+	
+	public static final String PAYPAL_SUCCESS_URL = "pay/success";
+	public static final String PAYPAL_CANCEL_URL = "pay/cancel";
+	
+	private Logger log = LoggerFactory.getLogger(getClass());
+	
+	@Autowired
+	private PaypalService paypalService;
+	
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("save", "1");
 		
 		return "member/welcome";
 	}
+	
+	
+	//paypal
+	@RequestMapping(value="/pay",method = RequestMethod.GET)
+	public String MBS(@RequestBody SimpleTestBean simpleTestBean,HttpServletRequest request) throws SQLException{
+		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
+		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
+		FormMemBean bean = new FormMemBean();
+		Integer x = Integer.valueOf(simpleTestBean.getXxx());
+
+		bean  = formRegisterDao.vvvv2(x);
+		
+		try {
+			int a = 500 ;
+			Payment payment = paypalService.createPayment(
+					a+.00, 
+					"USD", 
+					PaypalPaymentMethod.paypal, 
+					PaypalPaymentIntent.sale,
+					"payment description", 
+					cancelUrl, 
+					successUrl);
+			for(Links links : payment.getLinks()){
+				if(links.getRel().equals("approval_url")){
+					return "redirect:" + links.getHref();
+				}
+			}
+		} catch (PayPalRESTException e) {
+			log.error(e.getMessage());
+		}
+		return "redirect:/";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_CANCEL_URL)
+	public String cancelPay(){
+		return "cancel";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_SUCCESS_URL)
+	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId){
+		try {
+			Payment payment = paypalService.executePayment(paymentId, payerId);
+			if(payment.getState().equals("approved")){
+				return "success";
+			}
+		} catch (PayPalRESTException e) {
+			log.error(e.getMessage());
+		}
+		return "redirect:/";
+	}
+	//end paypal
 	
 	@RequestMapping(value = "/ddd")
 	public String ddd(Model model,HttpServletRequest res) throws SQLException, ParseException {
@@ -95,7 +169,7 @@ public class MemberController {
 		int M = 0 ,D =0;
 		M = cal.get(Calendar.MONTH);
 		D =cal.get(Calendar.DATE);
-		if(D <= 5 ) {
+		if(D <= 22 ) {
 			list = formMonnyDao.branddd(email, M+1,D);
 		}
 		

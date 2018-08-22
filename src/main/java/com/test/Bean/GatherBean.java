@@ -12,7 +12,15 @@ public class GatherBean {
 	private int gaMont;
 	private int gayear;
 	private String gaCar;
+	private int gaUser;
 	
+	
+	public int getGaUser() {
+		return gaUser;
+	}
+	public void setGaUser(int gaUser) {
+		this.gaUser = gaUser;
+	}
 	public String getGaCar() {
 		return gaCar;
 	}

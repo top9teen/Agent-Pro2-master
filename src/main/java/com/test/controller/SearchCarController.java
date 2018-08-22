@@ -59,17 +59,7 @@ public class SearchCarController {
 	public List<BrandBean> carmodel(@RequestBody CriteriaBean criteriaBean) throws SQLException{
 		
 		List<BrandBean> list = new ArrayList<>();
-		
-//		query master data
-	/*	for(int i=0; i<10; i++) {
-			bean = new BrandBean();
-			bean.setCarId(i);
-			bean.setCarName("Top"+i);
-			
-			list.add(bean);
-		}
-		
-		*/
+
 		list  = searchCarDao.findAll(criteriaBean.getYear(), criteriaBean.getBrand());
 		return list;
 	}
@@ -79,16 +69,7 @@ public class SearchCarController {
 		
 		FormregiterBean bean = new FormregiterBean();
 		Integer x = Integer.valueOf(simpleTestBean.getXxx());
-//		query master data
-	/*	for(int i=0; i<10; i++) {
-			bean = new BrandBean();
-			bean.setCarId(i);
-			bean.setCarName("Top"+i);
-			
-			list.add(bean);
-		}
-		
-		*/
+
 		bean  = formRegisterDao.vvvv(x);
 		return bean;
 	}
@@ -97,19 +78,11 @@ public class SearchCarController {
 		
 		FormMemBean bean = new FormMemBean();
 		Integer x = Integer.valueOf(simpleTestBean.getXxx());
-//		query master data
-	/*	for(int i=0; i<10; i++) {
-			bean = new BrandBean();
-			bean.setCarId(i);
-			bean.setCarName("Top"+i);
-			
-			list.add(bean);
-		}
-		
-		*/
+
 		bean  = formRegisterDao.vvvv2(x);
 		return bean;
 	}
+	
 
 // end class
 }

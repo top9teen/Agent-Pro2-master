@@ -37,7 +37,15 @@ public class FormregiterBean {
 	private String foRadio;
 	private Date foDate;
 	private int foReMonny;
+	private String foUs;
 	
+	
+	public String getFoUs() {
+		return foUs;
+	}
+	public void setFoUs(String foUs) {
+		this.foUs = foUs;
+	}
 	public int getFoReMonny() {
 		return foReMonny;
 	}
