@@ -53,11 +53,12 @@ body {
 
 		<div class="w3-modal-content w3-card w3-animate-bottom">
 			<div align="right">
-				<form name="welcome2" action="ddd" method="post">
+				<form name="welcome2" action="#" method="post">
 					<button class="w3-btn w3-green w3-deep-green w3-border "
-						onclick="ddd">จ่ายงวด</button>
+						onclick="ddd">ประวัติการจ่ายเงิน</button>
 				</form>
 			</div>
+			<form name="welcome" action=".">
 			<input id="myInput" style="width: 30%" align="right" type="text"
 				placeholder="ค้นหา...." class="w3-input w3-border w3-light-grey">
 			<input type="hidden" id="regid" name="regid" id="regid">
@@ -85,7 +86,7 @@ body {
 						<td><%=list.get(i).getGaPrie()%> บาท</td>
 						<td><%=list.get(i).getGaFistPeriod()%></td>
 						<td><%=list.get(i).getGaLastPeriod()%></td>
-						<td align="center"><a  onclick="gotohos1('<%=list.get(i).getGaId()%>')"><span
+						<td align="center"><a  onclick="gotohos122('<%=list.get(i).getGaId()%>')"><span
 								class="glyphicon glyphicon-search"> </span></a></td> 
 
 
@@ -95,7 +96,7 @@ body {
 					%>
 				</tbody>
 			</table>
-
+</form>
 		</div>
 
 		<!-- end class -->
@@ -104,24 +105,11 @@ body {
 
 	<script type="text/javascript">
 	
-	function gotoUpdate(filter) {
+	function gotohos122(filter) {
+	
 		 document.getElementById("regid").value = filter;
-		var simpleTestBean = { "xxx" :  $('#regid').val()};
-		 
-		$.ajax({
-			type : "POST",
-			url : "/MBS",
-			data: JSON.stringify(simpleTestBean) ,
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
-			success : function(msg) {
-				console.log('Success')
-			
-			}
-		});
-		/* document.getElementById("regid").value = filter;
-		document.welcome.action = "gotoSelPrivice";
-		document.welcome.submit(); */
+		document.welcome.action = "pay";
+		document.welcome.submit(); 
 		
 	}
 	

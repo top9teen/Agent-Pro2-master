@@ -34,6 +34,7 @@ import com.test.Bean.IdFormReBean;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
 import com.test.Bean.ProvinceBean;
+import com.test.Bean.ReceiptBean;
 import com.test.Bean.SaveTable1Bean;
 import com.test.Bean.SimpleTestBean;
 import com.test.Bean.YearCarBean;
@@ -91,8 +92,8 @@ public class MemberController {
 	@Autowired
 	FormMonnyDao formMonnyDao;
 	
-	public static final String PAYPAL_SUCCESS_URL = "pay/success";
-	public static final String PAYPAL_CANCEL_URL = "pay/cancel";
+	public static final String PAYPAL_SUCCESS_URL = "success";
+	public static final String PAYPAL_CANCEL_URL = "cancel";
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
@@ -106,8 +107,9 @@ public class MemberController {
 		return "member/welcome";
 	}
 	
-	
+	public int BosTERS;
 	//paypal
+<<<<<<< HEAD
 	@RequestMapping(value="/pay",method = RequestMethod.GET)
 	public String MBS(HttpServletRequest request) throws SQLException{
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
@@ -117,8 +119,17 @@ public class MemberController {
 
 	//	bean  = formRegisterDao.vvvv2(x);
 		
+=======
+	@RequestMapping(value="/pay")
+	public String MBS(HttpServletRequest request,int regid) throws SQLException{
+		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
+		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
+		BosTERS =regid;
+		GatherBean bean = new GatherBean();  
+		bean = formMonnyDao.vss(regid);
+>>>>>>> 815c7c20d729f8383320eae24fadba9a5e86eb88
 		try {
-			int a = 500 ;
+			int a = bean.getGaPrie() ;
 			Payment payment = paypalService.createPayment(
 					a+.00, 
 					"USD", 
@@ -139,26 +150,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_CANCEL_URL)
-	public String cancelPay(){
-		return "cancel";
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_SUCCESS_URL)
-	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId){
-		try {
-			Payment payment = paypalService.executePayment(paymentId, payerId);
-			if(payment.getState().equals("approved")){
-				return "success";
-			}
-		} catch (PayPalRESTException e) {
-			log.error(e.getMessage());
-		}
-		return "redirect:/";
-	}
-	//end paypal
-	
-	@RequestMapping(value = "/ddd")
-	public String ddd(Model model,HttpServletRequest res) throws SQLException, ParseException {
+	public String cancelPay(HttpServletRequest request) throws ParseException, SQLException{
 		List<GatherBean> list = new ArrayList<>();
 		String email = emailBean; 
 		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -169,12 +161,80 @@ public class MemberController {
 		int M = 0 ,D =0;
 		M = cal.get(Calendar.MONTH);
 		D =cal.get(Calendar.DATE);
-		if(D <= 24 ) {
-			list = formMonnyDao.branddd(email, M+1,D);
+		list = formMonnyDao.branddd(email, M+1,D);
+		
+		
+		
+		request.getSession().setAttribute("list", list);
+		return "member/FormUser";
+	}
+//ทำต่อ
+	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_SUCCESS_URL)
+	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId ,HttpServletRequest request) throws SQLException, ParseException{
+		GatherBean bean = new GatherBean();  
+		ReceiptBean cev = new ReceiptBean();
+		FormregiterBean rebean = new FormregiterBean();
+		int a=0,m=0,n=0,p=0;
+		List<GatherBean> list = new ArrayList<>();
+		String email = emailBean; 
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = sdf.parse("14/11/2018");
+		Calendar cal =  Calendar.getInstance();
+		today = new Date();
+		cal.setTime(today);
+		int M = 0 ,D =0,Y=0;
+		M = cal.get(Calendar.MONTH);
+		D =cal.get(Calendar.DATE);
+		Y=cal.get(Calendar.YEAR);
+		bean = formMonnyDao.vss(BosTERS);
+		a=bean.getGaId();
+	    m = M+2;
+	    n = Y;
+	    p= bean.getGaFistPeriod()-1;
+	  rebean = formRegisterDao.vvvv(bean.getGaUser());
+	     
+		try {
+			Payment payment = paypalService.executePayment(paymentId, payerId);
+			formMonnyDao.sot(m,n,a,p);
+			
+			if(payment.getState().equals("approved")){
+			
+				
+				
+			}
+		} catch (PayPalRESTException e) {
+			log.error(e.getMessage());
 		}
+		list = formMonnyDao.branddd(email, M+1,D);
+		request.getSession().setAttribute("list", list);
+		return "member/FormUser";
+	}
+	//end paypal
+	
+	@RequestMapping(value = "/ddd")
+	public String ddd(Model model,HttpServletRequest request) throws SQLException, ParseException {
+		List<GatherBean> list = new ArrayList<>();
+		String email = emailBean; 
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = sdf.parse("14/11/2018");
+		Calendar cal =  Calendar.getInstance();
+		today = new Date();
+		cal.setTime(today);
+		int M = 0 ,D =0;
+		M = cal.get(Calendar.MONTH);
+		D =cal.get(Calendar.DATE);
+<<<<<<< HEAD
+		if(D <= 24 ) {
+=======
+		
+			
+>>>>>>> 815c7c20d729f8383320eae24fadba9a5e86eb88
+			list = formMonnyDao.branddd(email, M+1,D);
+	
 		
 		
-		res.getSession().setAttribute("list", list);
+			request.getSession().setAttribute("list", list);
+	
 		return "member/FormUser";
 	}
 	
@@ -466,8 +526,10 @@ public class MemberController {
 	public String tableTest(HttpServletRequest requst)  throws SQLException{
 		List<FormregiterBean> list = new ArrayList<>();
 	list= selTableDao.selre(emailBean);
-
+	System.out.println(emailBean);
+	System.out.println(list.get(1).getFoLNameTH());
 	requst.getSession().setAttribute("listUser", list);
+	
 		return "member/CreditAnalysis";
 	}
 	
