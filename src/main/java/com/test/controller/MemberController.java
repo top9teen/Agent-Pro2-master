@@ -109,13 +109,13 @@ public class MemberController {
 	
 	//paypal
 	@RequestMapping(value="/pay",method = RequestMethod.GET)
-	public String MBS(@RequestBody SimpleTestBean simpleTestBean,HttpServletRequest request) throws SQLException{
+	public String MBS(HttpServletRequest request) throws SQLException{
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
-		FormMemBean bean = new FormMemBean();
-		Integer x = Integer.valueOf(simpleTestBean.getXxx());
+	//	FormMemBean bean = new FormMemBean();
+	//	Integer x = Integer.valueOf(simpleTestBean.getXxx());
 
-		bean  = formRegisterDao.vvvv2(x);
+	//	bean  = formRegisterDao.vvvv2(x);
 		
 		try {
 			int a = 500 ;
@@ -169,7 +169,7 @@ public class MemberController {
 		int M = 0 ,D =0;
 		M = cal.get(Calendar.MONTH);
 		D =cal.get(Calendar.DATE);
-		if(D <= 22 ) {
+		if(D <= 24 ) {
 			list = formMonnyDao.branddd(email, M+1,D);
 		}
 		
