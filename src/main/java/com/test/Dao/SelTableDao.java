@@ -31,7 +31,7 @@ public class SelTableDao {
 
 			while (rs.next()) {
 				bean = new FormregiterBean();
-				bean.setFoUs(rs.getString(""));
+				bean.setFoUs(rs.getString("fo_us"));
 				if(bean.getFoUs().equals("1")) {
 					bean.setFoId(rs.getInt("fo_id"));
 					bean.setFoGroupType(rs.getString("fo_groupType"));

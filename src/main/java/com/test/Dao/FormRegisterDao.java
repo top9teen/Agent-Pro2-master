@@ -226,6 +226,8 @@ public class FormRegisterDao {
 
 		return bean;
 	}
+	
+	
 
 	// end class
 }
