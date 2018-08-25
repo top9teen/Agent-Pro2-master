@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +58,6 @@ import com.test.server.ThanachartServer;
 import com.test.service.PaypalService;
 import com.test.util.URLUtils;
 
-
 @Controller
 public class MemberController {
 	@Autowired
@@ -73,7 +72,7 @@ public class MemberController {
 	ProvinceDao provinceDao;
 	@Autowired
 	FormRegisterDao formRegisterDao;
-	@Autowired 
+	@Autowired
 	KasikornDao kasikornDao;
 	@Autowired
 	KrungsriDao krungsriDao;
@@ -83,7 +82,7 @@ public class MemberController {
 	ThanachartDao thanachartDao;
 	@Autowired
 	LoginDao loginDao;
-	@Autowired 
+	@Autowired
 	RegisterDao registerDao;
 	@Autowired
 	SelTableDao selTableDao;
@@ -91,55 +90,39 @@ public class MemberController {
 	CkDao ckDao;
 	@Autowired
 	FormMonnyDao formMonnyDao;
-	
+
 	public static final String PAYPAL_SUCCESS_URL = "success";
 	public static final String PAYPAL_CANCEL_URL = "cancel";
-	
+
 	private Logger log = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	private PaypalService paypalService;
-	
+
 	@RequestMapping(value = "/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("save", "1");
-		
+
 		return "member/welcome";
 	}
-	
-	public int BosTERS;
-	//paypal
-<<<<<<< HEAD
-	@RequestMapping(value="/pay",method = RequestMethod.GET)
-	public String MBS(HttpServletRequest request) throws SQLException{
-		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
-		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
-	//	FormMemBean bean = new FormMemBean();
-	//	Integer x = Integer.valueOf(simpleTestBean.getXxx());
 
-	//	bean  = formRegisterDao.vvvv2(x);
-		
-=======
-	@RequestMapping(value="/pay")
-	public String MBS(HttpServletRequest request,int regid) throws SQLException{
+	public int BosTERS;
+
+	// paypal
+	@RequestMapping(value = "/pay")
+	public String MBS(HttpServletRequest request, int regid) throws SQLException {
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
-		BosTERS =regid;
-		GatherBean bean = new GatherBean();  
+		BosTERS = regid;
+		GatherBean bean = new GatherBean();
 		bean = formMonnyDao.vss(regid);
->>>>>>> 815c7c20d729f8383320eae24fadba9a5e86eb88
+
 		try {
-			int a = bean.getGaPrie() ;
-			Payment payment = paypalService.createPayment(
-					a+.00, 
-					"USD", 
-					PaypalPaymentMethod.paypal, 
-					PaypalPaymentIntent.sale,
-					"payment description", 
-					cancelUrl, 
-					successUrl);
-			for(Links links : payment.getLinks()){
-				if(links.getRel().equals("approval_url")){
+			int a = bean.getGaPrie();
+			Payment payment = paypalService.createPayment(a + .00, "USD", PaypalPaymentMethod.paypal,
+					PaypalPaymentIntent.sale, "payment description", cancelUrl, successUrl);
+			for (Links links : payment.getLinks()) {
+				if (links.getRel().equals("approval_url")) {
 					return "redirect:" + links.getHref();
 				}
 			}
@@ -148,130 +131,135 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_CANCEL_URL)
-	public String cancelPay(HttpServletRequest request) throws ParseException, SQLException{
+	public String cancelPay(HttpServletRequest request) throws ParseException, SQLException {
 		List<GatherBean> list = new ArrayList<>();
-		String email = emailBean; 
+		String email = emailBean;
 		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date today = sdf.parse("14/11/2018");
-		Calendar cal =  Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		today = new Date();
 		cal.setTime(today);
-		int M = 0 ,D =0;
+		int M = 0, D = 0;
 		M = cal.get(Calendar.MONTH);
-		D =cal.get(Calendar.DATE);
-		list = formMonnyDao.branddd(email, M+1,D);
-		
-		
-		
+		D = cal.get(Calendar.DATE);
+		list = formMonnyDao.branddd(email, M + 1, D);
+
 		request.getSession().setAttribute("list", list);
 		return "member/FormUser";
 	}
-//ทำต่อ
+
+	// ทำต่อ
 	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_SUCCESS_URL)
-	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId ,HttpServletRequest request) throws SQLException, ParseException{
-		GatherBean bean = new GatherBean();  
+	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId,
+			HttpServletRequest request) throws SQLException, ParseException {
+		GatherBean bean = new GatherBean();
 		ReceiptBean cev = new ReceiptBean();
 		FormregiterBean rebean = new FormregiterBean();
-		int a=0,m=0,n=0,p=0;
+		int a = 0, m = 0, n = 0, p = 0;
 		List<GatherBean> list = new ArrayList<>();
-		String email = emailBean; 
+		String email = emailBean;
 		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date today = sdf.parse("14/11/2018");
-		Calendar cal =  Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		today = new Date();
 		cal.setTime(today);
-		int M = 0 ,D =0,Y=0;
+		int M = 0, D = 0, Y = 0;
 		M = cal.get(Calendar.MONTH);
-		D =cal.get(Calendar.DATE);
-		Y=cal.get(Calendar.YEAR);
+		D = cal.get(Calendar.DATE);
+		Y = cal.get(Calendar.YEAR);
 		bean = formMonnyDao.vss(BosTERS);
-		a=bean.getGaId();
-	    m = M+2;
-	    n = Y;
-	    p= bean.getGaFistPeriod()-1;
-	  rebean = formRegisterDao.vvvv(bean.getGaUser());
-	     
+		a = bean.getGaId();
+		m = M + 2;
+		n = Y;
+		p = bean.getGaFistPeriod() - 1;
+		String Mo[] = { "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+				"กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
+
+		rebean = formRegisterDao.vvvv(bean.getGaUser());
+		cev.setReAdmin("แอดมินเว็บไซต์");
+		cev.setReBank("กสิกร");
+		cev.setReDay(D);
+		cev.setReMont(Mo[M]);
+		cev.setReEmail(bean.getGaEmail());
+		cev.setReIdga(bean.getGaId());
+		String vp = String.valueOf(bean.getGaPrie());
+		cev.setReMonny(vp);
+		cev.setReName(rebean.getFoFNameTH()+"        " + rebean.getFoLNameTH());
+		cev.setReYrar(n);
 		try {
 			Payment payment = paypalService.executePayment(paymentId, payerId);
-			formMonnyDao.sot(m,n,a,p);
-			
-			if(payment.getState().equals("approved")){
-			
-				
-				
+			formMonnyDao.sot(m, n, a, p);
+			formMonnyDao.msaw(cev);
+
+			if (payment.getState().equals("approved")) {
+
 			}
 		} catch (PayPalRESTException e) {
 			log.error(e.getMessage());
 		}
-		list = formMonnyDao.branddd(email, M+1,D);
+		list = formMonnyDao.branddd(email, M + 1, D);
 		request.getSession().setAttribute("list", list);
 		return "member/FormUser";
 	}
-	//end paypal
-	
+	// end paypal
+
 	@RequestMapping(value = "/ddd")
-	public String ddd(Model model,HttpServletRequest request) throws SQLException, ParseException {
+	public String ddd(Model model, HttpServletRequest request) throws SQLException, ParseException {
 		List<GatherBean> list = new ArrayList<>();
-		String email = emailBean; 
+		String email = emailBean;
 		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date today = sdf.parse("14/11/2018");
-		Calendar cal =  Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		today = new Date();
 		cal.setTime(today);
-		int M = 0 ,D =0;
+		int M = 0, D = 0;
 		M = cal.get(Calendar.MONTH);
-		D =cal.get(Calendar.DATE);
-<<<<<<< HEAD
-		if(D <= 24 ) {
-=======
-		
-			
->>>>>>> 815c7c20d729f8383320eae24fadba9a5e86eb88
-			list = formMonnyDao.branddd(email, M+1,D);
-	
-		
-		
-			request.getSession().setAttribute("list", list);
-	
+		D = cal.get(Calendar.DATE);
+
+		if (D <= 25) {
+
+			list = formMonnyDao.branddd(email, M + 1, D);
+
+		}
+
+		request.getSession().setAttribute("list", list);
+
 		return "member/FormUser";
 	}
-	
-	@RequestMapping(value="/gotologin")
-	public String login(String email , String password, Model model, HttpServletRequest request) {
-		String page="" ;
-		LoginBean bean =new LoginBean();
-		LoginBeanSimple beansim =new LoginBeanSimple();
+
+	@RequestMapping(value = "/gotologin")
+	public String login(String email, String password, Model model, HttpServletRequest request) {
+		String page = "";
+		LoginBean bean = new LoginBean();
+		LoginBeanSimple beansim = new LoginBeanSimple();
 		beansim.setEmail(email);
 		beansim.setPassword(password);
 		try {
-			bean=loginDao.login(beansim);
-			if(bean.getLoEmail() != null) {
-				if(bean.getLoStatus().equals("1")) {
-					page = "admin";
-				}
-				else if (bean.getLoStatus().equals("2")) {
+			bean = loginDao.login(beansim);
+			if (bean.getLoEmail() != null) {
+				if (bean.getLoStatus().equals("1")) {
+					page = "admin/welcome";
+				} else if (bean.getLoStatus().equals("2")) {
 					model.addAttribute("save", "1");
 					page = "member/welcome";
 					emailBean = bean.getLoEmail();
 				}
-				
-				
-			}
-			else {
+
+			} else {
 				page = "index";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return page;
 	}
 
 	@RequestMapping(value = "/gotobank")
 	public String gotocredit(String groupType, String carMake, String carMake2, String lessmoney, String lessyear,
-			HttpServletRequest request, Model model,String mos) throws SQLException {
+			HttpServletRequest request, Model model, String mos) throws SQLException {
 		KasikornPriceBean kabean = new KasikornPriceBean();
 		KrungsriPriceBean krbean = new KrungsriPriceBean();
 		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
@@ -282,11 +270,11 @@ public class MemberController {
 		carMake2Bean = carMake2;
 		lessmoneyBean = lessmoney;
 		lessyearBean = lessyear;
-		//MoTesBean = MoTes;
+		// MoTesBean = MoTes;
 		int bos = Integer.valueOf(mos);
-		
-		MoTesBean =bos;
-	
+
+		MoTesBean = bos;
+
 		kabean = kasikornServer.checkpriceKa(groupType, carMake2);
 		krbean = krungsriServer.checkpricekr(groupType, carMake2);
 		scbean = scbeasyServer.checkpricesc(groupType, carMake2);
@@ -297,7 +285,7 @@ public class MemberController {
 		request.getSession().setAttribute("scbean", scbean);
 		request.getSession().setAttribute("thbean", thbean);
 		request.getSession().setAttribute("yebean", yebean);
-	
+
 		return "member/SelBank";
 	}
 
@@ -312,7 +300,7 @@ public class MemberController {
 		bean.setLessyear(lessyearBean);
 
 		model.addAttribute("save", "1");
-		
+
 		request.getSession().setAttribute("bean", bean);
 
 		return "member/CreditForm";
@@ -326,14 +314,14 @@ public class MemberController {
 
 	@RequestMapping(value = "/gotopage2")
 	public String gotopage2(Model model, String lessmoney, String Incheckbox1, String Incheckbox2, String Incheckbox3,
-			String Incheckbox4,HttpServletRequest request) {
+			String Incheckbox4, HttpServletRequest request) {
 		IdFormReBean bean = new IdFormReBean();
 		lessmoneyBean = lessmoney;
 		Incheckbox1Bean = Incheckbox1;
 		Incheckbox2Bean = Incheckbox2;
 		Incheckbox3Bean = Incheckbox3;
 		Incheckbox4Bean = Incheckbox4;
-		
+
 		/*
 		 * System.out.println(Incheckbox1Bean); System.out.println(Incheckbox2Bean);
 		 * System.out.println(Incheckbox3Bean); System.out.println(Incheckbox4Bean);
@@ -341,14 +329,15 @@ public class MemberController {
 		bean.setEmailTest(emailBean);
 		request.getSession().setAttribute("bean", bean);
 		model.addAttribute("save", "2");
-		
+
 		return "member/CreditForm";
 	}
 
 	@RequestMapping(value = "/gotopage3")
 	public String gotopage3(Model model, String prefix, String fNameTH, String lNameTH, String birthDay,
 			String birthMonth, String birthYear, String refID, String mobilePhone, String email, String availableTime,
-			String job, String salary, HttpServletRequest request,String yearOfService, String monthOfService, String bureauPaidedStatusPaid) {
+			String job, String salary, HttpServletRequest request, String yearOfService, String monthOfService,
+			String bureauPaidedStatusPaid) {
 		prefixBean = prefix;
 		fNameTHBean = fNameTH;
 		lNameTHBean = lNameTH;
@@ -363,7 +352,7 @@ public class MemberController {
 		yearOfServiceBean = yearOfService;
 		monthOfServiceBean = monthOfService;
 		bureauPaidedStatusPaidBean = bureauPaidedStatusPaid;
-		
+
 		model.addAttribute("save", "3");
 		return "member/CreditForm";
 	}
@@ -377,7 +366,7 @@ public class MemberController {
 	public String propertyProjectNameBean, provinceBean, amphurBean, districtBean, RadioBean, prefix2Bean, fname2Bean,
 			lname2Bean, birthDay2Bean, birthMonth2Bean, birthYear2Bean, talaphone2Bean, email2Bean, job2Bean,
 			salary2Bean, yearOfService2Bean, monthOfService2Bean;
-	public int idsee ,MoTesBean;
+	public int idsee, MoTesBean;
 	public String groupTypeBean, carMakeBean, carMake2Bean, lessmoneyBean, lessyearBean, typeBankBean;
 	public String Incheckbox1Bean, Incheckbox2Bean, Incheckbox3Bean, Incheckbox4Bean;
 	public String prefixBean, fNameTHBean, lNameTHBean, birthDayBean, birthMonthBean, birthYearBean, refIDBean,
@@ -388,17 +377,18 @@ public class MemberController {
 	public String register(Model model, String propertyProjectName, int province, int amphur, int district,
 			String Radio, String prefix2, String fname2, String lname2, String birthDay2, String birthMonth2,
 			String birthYear2, String talaphone2, String email2, String job2, String salary2, String yearOfService2,
-			String monthOfService2,HttpServletRequest request,AmphurBean amp ,ProvinceBean pro ,DistrictBean dis)  throws SQLException{
+			String monthOfService2, HttpServletRequest request, AmphurBean amp, ProvinceBean pro, DistrictBean dis)
+			throws SQLException {
 		FormMemBean membean = new FormMemBean();
-		amp=ckDao.amphur(amphur);
-		pro=ckDao.province(province);
-		dis=ckDao.dis(district);
+		amp = ckDao.amphur(amphur);
+		pro = ckDao.province(province);
+		dis = ckDao.dis(district);
 		propertyProjectNameBean = propertyProjectName;
-		provinceBean =pro.getProvinceName();
+		provinceBean = pro.getProvinceName();
 		amphurBean = amp.getAmphurName();
 		districtBean = dis.getDistrictName();
 		RadioBean = Radio;
-		prefix2Bean =prefix2;
+		prefix2Bean = prefix2;
 		fname2Bean = fname2;
 		lname2Bean = lname2;
 		birthDay2Bean = birthDay2;
@@ -410,7 +400,7 @@ public class MemberController {
 		salary2Bean = salary2;
 		yearOfService2Bean = yearOfService2;
 		monthOfService2Bean = monthOfService2;
-		FormregiterBean formregiterBean = new FormregiterBean() ;
+		FormregiterBean formregiterBean = new FormregiterBean();
 		formregiterBean.setFoGroupType(groupTypeBean);
 		formregiterBean.setFoCarMake(carMakeBean);
 		formregiterBean.setFoCarMake2(carMake2Bean);
@@ -456,65 +446,61 @@ public class MemberController {
 		membean.setMeMonthOfService2(monthOfService2Bean);
 		formregiterBean.setFoReMonny(MoTesBean);
 		formRegisterDao.formRegister(formregiterBean);
-		if(RadioBean.equals("1")) {
+		if (RadioBean.equals("1")) {
 			IdFormReBean bean2 = new IdFormReBean();
-			bean2=formRegisterDao.idform(formregiterBean);
-			idsee=bean2.getFoId();
+			bean2 = formRegisterDao.idform(formregiterBean);
+			idsee = bean2.getFoId();
 			membean.setMeId(bean2.getFoId());
-			
-			formRegisterDao.formRegisterff(membean);	
+
+			formRegisterDao.formRegisterff(membean);
+		} else {
 		}
-		else {	
-		}
-		
-		// include type Blank 
-		if(typeBankBean.equals("ka1")) {
+
+		// include type Blank
+		if (typeBankBean.equals("ka1")) {
 			String a = Integer.toString(idsee);
 			formregiterBean.setFoTypebank(a);
 			kasikornDao.formRegister(formregiterBean);
-			if(RadioBean.equals("1")) {
+			if (RadioBean.equals("1")) {
 				IdFormReBean bean2 = new IdFormReBean();
-				bean2=kasikornDao.idform(formregiterBean);
+				bean2 = kasikornDao.idform(formregiterBean);
 				membean.setMeId(bean2.getFoId());
 				kasikornDao.formRegisterff(membean);
 			}
-			
-		} 
-		else if (typeBankBean.equals("kr1")) {
+
+		} else if (typeBankBean.equals("kr1")) {
 			String a = Integer.toString(idsee);
 			formregiterBean.setFoTypebank(a);
 			krungsriDao.formRegister(formregiterBean);
-			if(RadioBean.equals("1")) {
+			if (RadioBean.equals("1")) {
 				IdFormReBean bean2 = new IdFormReBean();
-				bean2=krungsriDao.idform(formregiterBean);
+				bean2 = krungsriDao.idform(formregiterBean);
 				membean.setMeId(bean2.getFoId());
 				krungsriDao.formRegisterff(membean);
 			}
-			
-			
-		}else if (typeBankBean.equals("th1")) {
+
+		} else if (typeBankBean.equals("th1")) {
 			String a = Integer.toString(idsee);
 			formregiterBean.setFoTypebank(a);
 			thanachartDao.formRegister(formregiterBean);
-			if(RadioBean.equals("1")) {
+			if (RadioBean.equals("1")) {
 				IdFormReBean bean2 = new IdFormReBean();
-				bean2=thanachartDao.idform(formregiterBean);
+				bean2 = thanachartDao.idform(formregiterBean);
 				membean.setMeId(bean2.getFoId());
 				thanachartDao.formRegisterff(membean);
 			}
-			
-			
-		}else if (typeBankBean.equals("sc1")) {
+
+		} else if (typeBankBean.equals("sc1")) {
 			String a = Integer.toString(idsee);
 			formregiterBean.setFoTypebank(a);
 			scbeasyDao.formRegister(formregiterBean);
-			if(RadioBean.equals("1")) {
+			if (RadioBean.equals("1")) {
 				IdFormReBean bean2 = new IdFormReBean();
-				bean2=scbeasyDao.idform(formregiterBean);
+				bean2 = scbeasyDao.idform(formregiterBean);
 				membean.setMeId(bean2.getFoId());
 				scbeasyDao.formRegisterff(membean);
 			}
-			
+
 		}
 
 		// Session
@@ -522,26 +508,26 @@ public class MemberController {
 		model.addAttribute("save", "1");
 		return "member/welcome";
 	}
+
 	@RequestMapping(value = "/gotoCreditAnalysis")
-	public String tableTest(HttpServletRequest requst)  throws SQLException{
+	public String tableTest(HttpServletRequest requst) throws SQLException {
 		List<FormregiterBean> list = new ArrayList<>();
-	list= selTableDao.selre(emailBean);
-	System.out.println(emailBean);
-	System.out.println(list.get(1).getFoLNameTH());
-	requst.getSession().setAttribute("listUser", list);
-	
+		list = selTableDao.selre(emailBean);
+		
+		requst.getSession().setAttribute("listUser", list);
+
 		return "member/CreditAnalysis";
 	}
-	
+
 	@RequestMapping(value = "/gotoSelPrivice")
-	public String tableTest2(HttpServletRequest requst,int regid)  throws SQLException{
+	public String tableTest2(HttpServletRequest requst, int regid) throws SQLException {
 		FormMemBean beanmem = new FormMemBean();
 		FormregiterBean beanres = new FormregiterBean();
-		
+
 		beanmem = selTableDao.selre2(regid);
 		beanres = selTableDao.selre3(regid);
-    requst.getSession().setAttribute("beanres", beanres);
-	requst.getSession().setAttribute("beanmem", beanmem);
+		requst.getSession().setAttribute("beanres", beanres);
+		requst.getSession().setAttribute("beanmem", beanmem);
 		return "member/CreditAnalysis";
 	}
 	// end class

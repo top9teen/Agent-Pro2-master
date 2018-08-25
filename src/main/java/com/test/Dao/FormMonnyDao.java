@@ -1,6 +1,6 @@
 package com.test.Dao;
 
-import static org.mockito.Matchers.byteThat;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,7 +41,7 @@ public class FormMonnyDao {
 			while (rs.next()) {
 				
 				bean = new GatherBean();
-			if(D <= 24) {
+			if(D <= 25) {
 					bean.setGaId(rs.getInt("ga_id"));
 					bean.setGaName(rs.getString("ga_name"));
 					bean.setGaCar(rs.getString("ga_car"));
@@ -153,7 +153,7 @@ public void msaw(ReceiptBean bean) throws SQLException{
 	StringBuilder sql = new StringBuilder();
 	Connection conn = con.openConnect();
 	try {
-		sql.append("INSERT INTO receipt(re_name,re_email,re_day,re_mont,re_year,re_monny,re_bank,re_admin) VALUES(?,?,?,?,?,?,?,?)");
+		sql.append("INSERT INTO receipt(re_name,re_email,re_day,re_mont,re_year,re_monny,re_bank,re_admin,re_idga) VALUES(?,?,?,?,?,?,?,?,?)");
 		prepared = conn.prepareStatement(sql.toString());
 		prepared.setString(1, bean.getReName());
 		prepared.setString(2, bean.getReEmail());
@@ -163,6 +163,7 @@ public void msaw(ReceiptBean bean) throws SQLException{
 		prepared.setString(6, bean.getReMonny());
 		prepared.setString(7, bean.getReBank());
 		prepared.setString(8, bean.getReAdmin());
+		prepared.setInt(9, bean.getReIdga());
 		prepared.executeUpdate();
 
 	} catch (Exception e) {

@@ -12,6 +12,14 @@ public class ReceiptBean {
 	private String reMonny;
 	private String reBank;
 	private String reAdmin;
+	private int reIdga;
+	
+	public int getReIdga() {
+		return reIdga;
+	}
+	public void setReIdga(int reIdga) {
+		this.reIdga = reIdga;
+	}
 	public int getReId() {
 		return reId;
 	}
