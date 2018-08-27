@@ -151,7 +151,7 @@ h3 {
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
 						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="ka"> </label>
+						<label id="krabant"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="kr1">
@@ -173,7 +173,7 @@ h3 {
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
 						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="ka"> </label>
+						<label id="scabant"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="sc1">
@@ -195,7 +195,7 @@ h3 {
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
 						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="ka"> </label>
+						<label id="thabant"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="th1">
@@ -236,6 +236,53 @@ h3 {
 
 					}
 				});
+				
+				
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8091/kr",
+					data : JSON.stringify(miradoBean),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(msg) {
+						console.log('Success')
+
+						$('#krabant').text('วงเงินสูงสุด'+ msg.krPrice +'บาท');
+
+					}
+				});
+				
+				
+				
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8092/sc",
+					data : JSON.stringify(miradoBean),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(msg) {
+						console.log('Success')
+
+						$('#scabant').text('วงเงินสูงสุด'+ msg.scPrice +'บาท');
+
+					}
+				});
+				
+
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8093/th",
+					data : JSON.stringify(miradoBean),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(msg) {
+						console.log('Success')
+
+						$('#thabant').text('วงเงินสูงสุด'+ msg.thPrice +'บาท');
+
+					}
+				});
+				
 			});
 </script>
 
