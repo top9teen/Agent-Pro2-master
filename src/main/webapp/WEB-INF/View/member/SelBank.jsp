@@ -58,17 +58,19 @@ img {
 	padding: 5px;
 	width: 150px;
 }
+
 label {
 	font-size: 15px;
-	font-style:  oblique;
+	font-style: oblique;
 	color: blue;
 }
+
 p {
-	color: 	#0080ff;
+	color: #0080ff;
 }
+
 h3 {
-    
-	 text-shadow: 2px 2px 5px yellow ;
+	text-shadow: 2px 2px 5px yellow;
 }
 </style>
 <jsp:include page="../../Template/Header.jsp"></jsp:include>
@@ -87,18 +89,22 @@ h3 {
 			onclick="w3_open()"></i>
 
 		<%
-			KasikornPriceBean kabean = null;
-			KrungsriPriceBean krbean = null;
-			ScbeasyPriceBean scbean = null;
-			ThanachartPriceBean thbean = null;
-			YearCarBean yebean = null;
+			/* 	KasikornPriceBean kabean = null;
+				KrungsriPriceBean krbean = null;
+				ScbeasyPriceBean scbean = null;
+				ThanachartPriceBean thbean = null;
+				*/
+				YearCarBean yebean = null; 
+			MiradoBean mibean = null;
 		%>
 		<%
-			kabean = (KasikornPriceBean) request.getSession().getAttribute("kabean");
+			/* kabean = (KasikornPriceBean) request.getSession().getAttribute("kabean");
 			krbean = (KrungsriPriceBean) request.getSession().getAttribute("krbean");
 			scbean = (ScbeasyPriceBean) request.getSession().getAttribute("scbean");
 			thbean = (ThanachartPriceBean) request.getSession().getAttribute("thbean");
-			yebean = (YearCarBean) request.getSession().getAttribute("yebean");
+			 */
+			 yebean = (YearCarBean) request.getSession().getAttribute("yebean");
+			mibean = (MiradoBean) request.getSession().getAttribute("mibean");
 		%>
 
 		<div class="w3-modal-content w3-animate-zoom w3-card "
@@ -111,19 +117,19 @@ h3 {
 		</div>
 		<div class="w3-modal-content w3-card w3-animate-bottom">
 			<form action="gotoreg">
+				<input type="hidden" value="<%=mibean.getGroupType()%>"
+					id="groupType2" name="groupType2"> <input type="hidden"
+					value="<%=mibean.getCarMake2()%>" id="carMakeed" name="carMakeed">
 				<h3 align="center">ธนาคาร กสิกร</h3>
 				<div class="row">
 					<div class="col-sm-4">
 						<img alt="" src="access/img/logo/kr2.jpg"
-							style="border-radius: 50%;"><br>
-						<br>
-						<br>
+							style="border-radius: 50%;"><br> <br> <br>
 					</div>
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;">ดอกเบี้ย <%=yebean.getYrPercent() %> %</h2>
-						<label id="ka">ให้วงเงินสูงสุด <%=kabean.getKaPrice()%> บาท
-						</label>
+						<h2 style="color: green;" id="kaper"> <%=yebean.getYrPercent() %> %</h2>
+						<label id="kabant"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="ka1">
@@ -140,15 +146,12 @@ h3 {
 				<div class="row">
 					<div class="col-sm-4">
 						<img alt="" src="access/img/logo/kr1.jpg"
-							style="border-radius: 50%;"><br>
-						<br>
-						<br>
+							style="border-radius: 50%;"><br> <br> <br>
 					</div>
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;">ดอกเบี้ย <%=yebean.getYrPercent() %> %</h2>
-						<label id="ka">ให้วงเงินสูงสุด <%=krbean.getKrPrice()%> บาท
-						</label>
+						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
+						<label id="ka"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="kr1">
@@ -165,15 +168,12 @@ h3 {
 				<div class="row">
 					<div class="col-sm-4">
 						<img alt="" src="access/img/logo/kr3.jpg"
-							style="border-radius: 50%;"><br>
-						<br>
-						<br>
+							style="border-radius: 50%;"><br> <br> <br>
 					</div>
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;">ดอกเบี้ย <%=yebean.getYrPercent() %> %</h2>
-						<label id="ka">ให้วงเงินสูงสุด <%=scbean.getScPrice()%> บาท
-						</label>
+						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
+						<label id="ka"> </label>
 					</div>
 					<div class="col-sm-4">
 						<input type="hidden" name="typebank" value="sc1">
@@ -190,18 +190,15 @@ h3 {
 				<div class="row">
 					<div class="col-sm-4">
 						<img alt="" src="access/img/logo/k4.jpg"
-							style="border-radius: 50%;"><br>
-						<br>
-						<br>
+							style="border-radius: 50%;"><br> <br> <br>
 					</div>
 					<div class="col-sm-4">
 						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;">ดอกเบี้ย <%=yebean.getYrPercent() %> %</h2>
-						<label id="ka">ให้วงเงินสูงสุด <%=thbean.getThPrice()%> บาท
-						</label>
+						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
+						<label id="ka"> </label>
 					</div>
 					<div class="col-sm-4">
-						<input type="hidden"  name="typebank" value="th1">
+						<input type="hidden" name="typebank" value="th1">
 						<button type="submit" class="button button2">เลือก</button>
 					</div>
 				</div>
@@ -214,9 +211,32 @@ h3 {
 		<!-- end class -->
 	</div>
 
-	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
+	
 
 </body>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				/* $('#kabant').text('วงเงินสูงสุด'); */
+				var miradoBean = {
+					"groupType" : $('#groupType2').val(),
+					"carMake2" : $('#carMakeed').val()
+				};
 
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8090/kaprice",
+					data : JSON.stringify(miradoBean),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(msg) {
+						console.log('Success')
+
+						$('#kabant').text('วงเงินสูงสุด'+ msg.kaPrice +'บาท');
+
+					}
+				});
+			});
+</script>
 
 </html>

@@ -33,6 +33,7 @@ import com.test.Bean.GatherBean;
 import com.test.Bean.IdFormReBean;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
+import com.test.Bean.MiradoBean;
 import com.test.Bean.ProvinceBean;
 import com.test.Bean.ReceiptBean;
 import com.test.Bean.SaveTable1Bean;
@@ -260,32 +261,38 @@ public class MemberController {
 	@RequestMapping(value = "/gotobank")
 	public String gotocredit(String groupType, String carMake, String carMake2, String lessmoney, String lessyear,
 			HttpServletRequest request, Model model, String mos) throws SQLException {
-		KasikornPriceBean kabean = new KasikornPriceBean();
+		/*KasikornPriceBean kabean = new KasikornPriceBean();
 		KrungsriPriceBean krbean = new KrungsriPriceBean();
 		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
 		ThanachartPriceBean thbean = new ThanachartPriceBean();
+	*/
 		YearCarBean yebean = new YearCarBean();
+		MiradoBean mibean = new MiradoBean();
+		mibean.setGroupType(groupType);
+		mibean.setCarMake2(carMake2);
 		groupTypeBean = groupType;
 		carMakeBean = carMake;
 		carMake2Bean = carMake2;
 		lessmoneyBean = lessmoney;
 		lessyearBean = lessyear;
-		// MoTesBean = MoTes;
+	
 		int bos = Integer.valueOf(mos);
 
 		MoTesBean = bos;
-
-		kabean = kasikornServer.checkpriceKa(groupType, carMake2);
+		yebean = provinceDao.yrbean(lessyear);
+	
+	/*	kabean = kasikornServer.checkpriceKa(groupType, carMake2);
 		krbean = krungsriServer.checkpricekr(groupType, carMake2);
 		scbean = scbeasyServer.checkpricesc(groupType, carMake2);
 		thbean = thanachartServer.checkpriceth(groupType, carMake2);
-		yebean = provinceDao.yrbean(lessyear);
+		
 		request.getSession().setAttribute("kabean", kabean);
 		request.getSession().setAttribute("krbean", krbean);
 		request.getSession().setAttribute("scbean", scbean);
 		request.getSession().setAttribute("thbean", thbean);
+		*/
 		request.getSession().setAttribute("yebean", yebean);
-
+		request.getSession().setAttribute("mibean", mibean);
 		return "member/SelBank";
 	}
 
