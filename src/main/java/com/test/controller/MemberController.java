@@ -219,7 +219,7 @@ public class MemberController {
 		M = cal.get(Calendar.MONTH);
 		D = cal.get(Calendar.DATE);
 
-		if (D <= 25) {
+		if (D <= 27) {
 
 			list = formMonnyDao.branddd(email, M + 1, D);
 

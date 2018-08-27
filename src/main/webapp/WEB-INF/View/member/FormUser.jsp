@@ -53,7 +53,7 @@ body {
 
 		<div class="w3-modal-content w3-card w3-animate-bottom">
 			<div align="right">
-				<form name="welcome2" action="#" method="post">
+				<form name="welcome2" action="/" method="post">
 					<button class="w3-btn w3-green w3-deep-green w3-border "
 						onclick="ddd">ประวัติการจ่ายเงิน</button>
 				</form>
@@ -69,8 +69,8 @@ body {
 						<th class="text-center">ชื่อ</th>
 						<th class="text-center">ยี่ห่อรถ</th>
 						<th class="text-center">เงินที่ต้องจ่ายต่อเดือน</th>
-						<th class="text-center">งวดทั้งหมด</th>
 						<th class="text-center">งวดที่เหลือ</th>
+						<th class="text-center">งวดทั้งหมด</th>
 						<th class="text-center">จ่ายค่างวด</th>
 					</tr>
 				</thead>

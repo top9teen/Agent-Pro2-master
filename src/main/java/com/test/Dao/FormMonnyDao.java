@@ -41,7 +41,7 @@ public class FormMonnyDao {
 			while (rs.next()) {
 				
 				bean = new GatherBean();
-			if(D <= 25) {
+			if(D <= 27) {
 					bean.setGaId(rs.getInt("ga_id"));
 					bean.setGaName(rs.getString("ga_name"));
 					bean.setGaCar(rs.getString("ga_car"));
