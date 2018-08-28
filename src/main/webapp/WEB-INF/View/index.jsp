@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <jsp:include page="../Template/Header.jsp"></jsp:include>
+
 <style type="text/css">
 body {
     /* The image used */
@@ -26,9 +27,33 @@ body {
 </style>
 <title>ReFinder</title>
 </head>
-<jsp:include page="NormalPerson/FistPagePerson.jsp"></jsp:include>
+<% String result =  null  ; %>
+<%	result = (String) request.getAttribute("msg"); %>
 <body>
-
+<%
+						if (result.equals("G")) {
+					%>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>แบน </strong> โดนแบน 
+					</div>
+					
+					<%
+						}else if(result.equals("L")){
+					%>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<div class="alert alert-success">
+						<strong>Success </strong> Logout Success
+					</div>
+					<%
+						}else if(result.equals("F")){
+					%>
+					<div class="alert alert-danger">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>ผิดพลาด ! </strong> กรุณากรอก ให้ถูกต้อง !!
+					</div>
+					<%} %>
+<jsp:include page="NormalPerson/FistPagePerson.jsp"></jsp:include>
 </body>
 <jsp:include page="../Template/Footer.jsp"></jsp:include>
 </html>

@@ -112,6 +112,20 @@ body {
 		document.welcome.submit(); 
 		
 	}
+	$(document).ready(
+			function() {
+				$("#myInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
 	
 	</script>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>

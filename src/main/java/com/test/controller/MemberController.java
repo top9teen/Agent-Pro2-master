@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
-import com.test.BankBean.KasikornPriceBean;
-import com.test.BankBean.KrungsriPriceBean;
-import com.test.BankBean.ScbeasyPriceBean;
-import com.test.BankBean.ThanachartPriceBean;
+
 import com.test.Bean.AmphurBean;
 import com.test.Bean.DistrictBean;
 import com.test.Bean.FormMemBean;
@@ -37,7 +34,7 @@ import com.test.Bean.MiradoBean;
 import com.test.Bean.ProvinceBean;
 import com.test.Bean.ReceiptBean;
 import com.test.Bean.SaveTable1Bean;
-import com.test.Bean.SimpleTestBean;
+
 import com.test.Bean.YearCarBean;
 import com.test.Dao.CkDao;
 import com.test.Dao.FormMonnyDao;
@@ -189,6 +186,9 @@ public class MemberController {
 		cev.setReMonny(vp);
 		cev.setReName(rebean.getFoFNameTH()+"        " + rebean.getFoLNameTH());
 		cev.setReYrar(n);
+		cev.setReCar(rebean.getFoCarMake());
+		cev.setReCaryear(rebean.getFoGroupType());
+		cev.setReCarmodel(rebean.getFoCarMake2());
 		try {
 			Payment payment = paypalService.executePayment(paymentId, payerId);
 			formMonnyDao.sot(m, n, a, p);
@@ -219,7 +219,7 @@ public class MemberController {
 		M = cal.get(Calendar.MONTH);
 		D = cal.get(Calendar.DATE);
 
-		if (D <= 27) {
+		if (D <= 28) {
 
 			list = formMonnyDao.branddd(email, M + 1, D);
 
@@ -241,14 +241,22 @@ public class MemberController {
 			bean = loginDao.login(beansim);
 			if (bean.getLoEmail() != null) {
 				if (bean.getLoStatus().equals("1")) {
+					model.addAttribute("msg", "L");
 					page = "admin/welcome";
 				} else if (bean.getLoStatus().equals("2")) {
 					model.addAttribute("save", "1");
+					model.addAttribute("msg", "L");
 					page = "member/welcome";
 					emailBean = bean.getLoEmail();
+				}else if (bean.getLoStatus().equals("3")) {
+					model.addAttribute("msg", "G");
+					page = "index";
+					
 				}
 
+
 			} else {
+				model.addAttribute("msg", "F");
 				page = "index";
 			}
 		} catch (Exception e) {

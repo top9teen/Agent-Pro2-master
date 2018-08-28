@@ -6,7 +6,7 @@ package com.test.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -30,7 +30,7 @@ public class NormalPersonController {
 	
 	
 	@RequestMapping(value="/gotoregister")
-	public String register(String email , String password) {
+	public String register(String email , String password,Model model) {
 		LoginBeanSimple beansim =new LoginBeanSimple();
 		beansim.setEmail(email);
 		beansim.setPassword(password);
@@ -45,6 +45,7 @@ public class NormalPersonController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		model.addAttribute("msg", "");
 		return "index";
 	}
 	//end class

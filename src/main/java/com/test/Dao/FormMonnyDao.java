@@ -41,7 +41,7 @@ public class FormMonnyDao {
 			while (rs.next()) {
 				
 				bean = new GatherBean();
-			if(D <= 27) {
+			if(D <= 28) {
 					bean.setGaId(rs.getInt("ga_id"));
 					bean.setGaName(rs.getString("ga_name"));
 					bean.setGaCar(rs.getString("ga_car"));
@@ -153,7 +153,7 @@ public void msaw(ReceiptBean bean) throws SQLException{
 	StringBuilder sql = new StringBuilder();
 	Connection conn = con.openConnect();
 	try {
-		sql.append("INSERT INTO receipt(re_name,re_email,re_day,re_mont,re_year,re_monny,re_bank,re_admin,re_idga) VALUES(?,?,?,?,?,?,?,?,?)");
+		sql.append("INSERT INTO receipt(re_name,re_email,re_day,re_mont,re_year,re_monny,re_bank,re_admin,re_idga,re_carmodel,re_car,re_caryear) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 		prepared = conn.prepareStatement(sql.toString());
 		prepared.setString(1, bean.getReName());
 		prepared.setString(2, bean.getReEmail());
@@ -164,6 +164,9 @@ public void msaw(ReceiptBean bean) throws SQLException{
 		prepared.setString(7, bean.getReBank());
 		prepared.setString(8, bean.getReAdmin());
 		prepared.setInt(9, bean.getReIdga());
+		prepared.setString(10, bean.getReCarmodel());
+		prepared.setString(11, bean.getReCar());
+		prepared.setString(12, bean.getReCaryear());
 		prepared.executeUpdate();
 
 	} catch (Exception e) {

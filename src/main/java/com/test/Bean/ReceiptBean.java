@@ -13,7 +13,29 @@ public class ReceiptBean {
 	private String reBank;
 	private String reAdmin;
 	private int reIdga;
+	private String reCaryear;
+	private String reCarmodel;
+	private String reCar;
 	
+	
+	public String getReCar() {
+		return reCar;
+	}
+	public void setReCar(String reCar) {
+		this.reCar = reCar;
+	}
+	public String getReCaryear() {
+		return reCaryear;
+	}
+	public void setReCaryear(String reCaryear) {
+		this.reCaryear = reCaryear;
+	}
+	public String getReCarmodel() {
+		return reCarmodel;
+	}
+	public void setReCarmodel(String reCarmodel) {
+		this.reCarmodel = reCarmodel;
+	}
 	public int getReIdga() {
 		return reIdga;
 	}

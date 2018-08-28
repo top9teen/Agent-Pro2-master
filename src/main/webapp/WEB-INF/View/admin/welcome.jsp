@@ -28,7 +28,7 @@ body {
 
 <body>
 
-	<jsp:include page="../../Template/manu.jsp"></jsp:include>
+	<jsp:include page="../../Template/manuadmin.jsp"></jsp:include>
 	<!-- Modal that pops up when you click on "New Message" -->
 
 	<div class="w3-main" style="margin-left: 400px;">
@@ -50,9 +50,6 @@ body {
 
 <!-- end class -->
 	</div>
-
-
-	
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 </body>
 </html>
