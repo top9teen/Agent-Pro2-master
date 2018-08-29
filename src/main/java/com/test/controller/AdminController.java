@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import com.test.Bean.FormregiterBean;
 import com.test.Bean.LoginBean;
 import com.test.Bean.ReceiptBean;
+
 import com.test.Dao.LoginDao;
 import com.test.Dao.SelTableDao;
 import com.test.Dao.TransferDao;
@@ -36,7 +38,6 @@ public class AdminController {
  request.getSession().setAttribute("list", list);
 		return "admin/customerlist";
 	}
-	
 	@RequestMapping(value = "/listproduck")
 	public String listproduck(HttpServletRequest requst) throws SQLException {
 		List<FormregiterBean> list = new ArrayList<>();
@@ -47,7 +48,6 @@ public class AdminController {
 		return "member/CreditAnalysis";
 	}
 	
-	
 	@RequestMapping(value = "/transfer")
 	public String transfer(HttpServletRequest requst) throws SQLException {
 		List<ReceiptBean> list  = new ArrayList<>();
@@ -57,6 +57,5 @@ public class AdminController {
 			
 		return "admin/Transferhistory";
 	}
-	
 	// end class
 }
