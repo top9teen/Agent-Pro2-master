@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.test.Bean.FormregiterBean;
 import com.test.Bean.LoginBean;
+import com.test.Bean.ReceiptBean;
 import com.test.Dao.LoginDao;
 import com.test.Dao.SelTableDao;
+import com.test.Dao.TransferDao;
 
 @Controller
 public class AdminController {
@@ -23,6 +25,9 @@ public class AdminController {
 	LoginDao loginDao ;
 	@Autowired
 	SelTableDao selTableDao;
+	@Autowired
+	TransferDao  transferDao;
+	
 	
 	@RequestMapping(value = "/listuser")
 	public String listuser(Model model ,HttpServletRequest request ) throws SQLException {
@@ -40,6 +45,17 @@ public class AdminController {
 		requst.getSession().setAttribute("listUser", list);
 
 		return "member/CreditAnalysis";
+	}
+	
+	
+	@RequestMapping(value = "/transfer")
+	public String transfer(HttpServletRequest requst) throws SQLException {
+		List<ReceiptBean> list  = new ArrayList<>();
+		
+		list = transferDao.Trens();
+		requst.getSession().setAttribute("list", list);
+			
+		return "admin/Transferhistory";
 	}
 	
 	// end class

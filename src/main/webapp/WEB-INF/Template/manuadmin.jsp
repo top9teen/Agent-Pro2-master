@@ -16,7 +16,7 @@
 		 <a href="listproduck"
 		class="w3-bar-item w3-button"><i
 		class="fa fa-trash w3-margin-right"></i>ดูรายการ</a>
-		<a href="#"
+		<a href="transfer"
 		class="w3-bar-item w3-button"><i
 		class="fa fa-trash w3-margin-right"></i>ดูประวัติการโอนเงิน</a>
 		<a href="logout"
