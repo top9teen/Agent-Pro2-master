@@ -33,6 +33,7 @@ public class TransferDao {
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
 				bean = new ReceiptBean();
+				bean.setReId(rs.getInt("re_id"));
 				bean.setReName(rs.getString("re_name"));
 				bean.setReEmail(rs.getString("re_email"));
 				bean.setReDay(rs.getInt("re_day"));
@@ -58,4 +59,50 @@ public class TransferDao {
 		
 		return list  ; 
 	}
+	
+	public List<ReceiptBean> Trensasda (String email) throws SQLException{
+		List<ReceiptBean>  list = new ArrayList<>();
+		ReceiptBean bean  = new ReceiptBean();
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		Connection conn = con.openConnect();
+		
+
+		try {
+			sql.append(" SELECT * FROM  receipt WHERE re_email = ?  ");
+			prepared = conn.prepareStatement(sql.toString());
+			prepared.setString(1,email);
+	
+
+			ResultSet rs = prepared.executeQuery();
+			while (rs.next()) {
+				bean = new ReceiptBean();
+				bean.setReId(rs.getInt("re_id"));
+				bean.setReName(rs.getString("re_name"));
+				bean.setReEmail(rs.getString("re_email"));
+				bean.setReDay(rs.getInt("re_day"));
+				bean.setReMont(rs.getString("re_mont"));
+				bean.setReYrar(rs.getInt("re_year"));
+				bean.setReMonny(rs.getString("re_monny"));
+				bean.setReBank(rs.getString("re_bank"));
+				bean.setReAdmin(rs.getString("re_admin"));
+				bean.setReCaryear(rs.getString("re_caryear"));
+				bean.setReIdga(rs.getInt("re_idGa"));
+				bean.setReCar(rs.getString("re_car"));
+				bean.setReCarmodel(rs.getString("re_carmodel"));
+				list.add(bean);
+			}
+
+	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			conn.close();
+		}
+		
+		return list  ; 
+	}
+	
 }

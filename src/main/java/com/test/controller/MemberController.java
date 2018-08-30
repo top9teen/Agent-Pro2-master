@@ -43,6 +43,7 @@ import com.test.Dao.LoginDao;
 import com.test.Dao.ProvinceDao;
 import com.test.Dao.RegisterDao;
 import com.test.Dao.SelTableDao;
+import com.test.Dao.TransferDao;
 import com.test.ServarDao.KasikornDao;
 import com.test.ServarDao.KrungsriDao;
 import com.test.ServarDao.ScbeasyDao;
@@ -88,6 +89,8 @@ public class MemberController {
 	CkDao ckDao;
 	@Autowired
 	FormMonnyDao formMonnyDao;
+	@Autowired
+	TransferDao transferDao;
 
 	public static final String PAYPAL_SUCCESS_URL = "success";
 	public static final String PAYPAL_CANCEL_URL = "cancel";
@@ -544,6 +547,13 @@ public class MemberController {
 		requst.getSession().setAttribute("beanres", beanres);
 		requst.getSession().setAttribute("beanmem", beanmem);
 		return "member/CreditAnalysis";
+	}
+	@RequestMapping(value = "/gototran")
+	public String gototran(HttpServletRequest requst) throws SQLException {
+			List<ReceiptBean> list = new ArrayList<>();
+		list = transferDao.Trensasda(emailBean);
+		requst.getSession().setAttribute("list", list);
+		return "member/Transfer";
 	}
 	// end class
 }

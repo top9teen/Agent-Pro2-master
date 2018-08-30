@@ -7,6 +7,8 @@
 <head>
 <link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="access/css/A4.css">
+<link rel="stylesheet" href="access/css/bootstrap.min.css">
 <style type="text/css">
 body {
 	/* The image used */
@@ -34,7 +36,7 @@ body {
 
 <body>
 
-	<jsp:include page="../../Template/manuadmin.jsp"></jsp:include>
+	<jsp:include page="../../Template/manu.jsp"></jsp:include>
 	<!-- Modal that pops up when you click on "New Message" -->
 
 	<div class="w3-main" style="margin-left: 400px;">
@@ -45,16 +47,14 @@ body {
 
 		<div class="w3-modal-content w3-animate-zoom w3-card"
 			style="background-color: #0193d7">
-			<h1 style="font-style: italic;" align="center">ยินดีตอนรับ ADMIN</h1>
+			<h1 style="font-style: italic;" align="center">ระบบวิเคราะห์สินเชื่อรถยนต์</h1>
 
 
 		</div>
 
 		<div class="w3-modal-content w3-card w3-animate-bottom">
 
-			<div align="right">
-				
-			</div>
+			<div align="right"></div>
 			<form name="welcome" action=".">
 				<input id="myInput" style="width: 30%" align="right" type="text"
 					placeholder="ค้นหา...." class="w3-input w3-border w3-light-grey">
@@ -71,7 +71,7 @@ body {
 							<th class="text-center">แบงค์</th>
 							<th class="text-center">จำนวนเงิน</th>
 							<th class="text-center">วันเดือนปีที่จ่าย</th>
-							<th class="text-center"> ปริ้นใบเสร็จ</th>
+							<th class="text-center">ปริ้นใบเสร็จ</th>
 
 						</tr>
 					</thead>
@@ -91,8 +91,9 @@ body {
 							<td><%=list.get(i).getReMonny()%></td>
 							<td><%=list.get(i).getReDay()%> / <%=list.get(i).getReMont()%>
 								/ <%=list.get(i).getReYrar()%></td>
-								<td align="center"><a  onclick="gotoUpdate('<%=list.get(i).getReId()%>')"><span
-								class="glyphicon glyphicon-search"> </span></a></td> 
+							<td align="center"><a
+								onclick="gotoUpdateggggg('<%=list.get(i).getReId()%>')"><span
+									class="glyphicon glyphicon-search"> </span></a></td>
 
 
 
@@ -107,12 +108,36 @@ body {
 
 
 		</div>
+		<div class="w3-modal " id="Forms25" style="display: none;">
+			<div class="w3-modal-content w3-animate-zoom">
+				<div class="w3-container w3-padding w3-sand">
+					<span
+						onclick="document.getElementById('Forms25').style.display='none'"
+						class="w3-button w3-red w3-right w3-xxlarge"><i
+						class="fa fa-remove"></i></span>
+				</div>
 
+				<jsp:include page="fromtranfer.jsp"></jsp:include>
+				 <input type="button"
+					class="w3-btn w3-green w3-deep-orange w3-border w3-right"
+					onclick="document.getElementById('Forms25').style.display='none'"
+					value="ยกเลิก">
+			</div>
+		</div>
 		<!-- end class -->
 	</div>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 	<script type="text/javascript">
 	
+
+	
+	function gotoUpdateggggg(filter) {
+		 document.getElementById("regid").value = filter;
+		var simpleTestBean = { "xxx" :  $('#regid').val()};
+		$("#Forms25").show('slow');
+
+		
+	}
 	$(document).ready(
 			function() {
 				$("#myInput").on(
@@ -127,6 +152,10 @@ body {
 									});
 						});
 			});
-	</script>
+	
+
+
+</script>
+<script type="text/javascript" src="access/js/pdffile.js" charset="utf-8"> </script>
 </body>
 </html>

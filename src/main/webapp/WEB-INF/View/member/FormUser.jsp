@@ -53,7 +53,7 @@ body {
 
 		<div class="w3-modal-content w3-card w3-animate-bottom">
 			<div align="right">
-				<form name="welcome2" action="/" method="post">
+				<form name="welcome2" action="gototran" method="post">
 					<button class="w3-btn w3-green w3-deep-green w3-border "
 						onclick="ddd">ประวัติการจ่ายเงิน</button>
 				</form>
