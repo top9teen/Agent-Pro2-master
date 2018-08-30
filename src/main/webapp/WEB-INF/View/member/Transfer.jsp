@@ -34,7 +34,7 @@ body {
 	list = (List<ReceiptBean>) request.getSession().getAttribute("list");
 %>
 
-<body>
+<body >
 
 	<jsp:include page="../../Template/manu.jsp"></jsp:include>
 	<!-- Modal that pops up when you click on "New Message" -->
@@ -52,7 +52,7 @@ body {
 
 		</div>
 
-		<div class="w3-modal-content w3-card w3-animate-bottom">
+		<div class="w3-modal-content w3-card w3-animate-bottom" >
 
 			<div align="right"></div>
 			<form name="welcome" action=".">
@@ -71,7 +71,7 @@ body {
 							<th class="text-center">แบงค์</th>
 							<th class="text-center">จำนวนเงิน</th>
 							<th class="text-center">วันเดือนปีที่จ่าย</th>
-							<th class="text-center">ปริ้นใบเสร็จ</th>
+							<th class="text-center">ดูใบเสร็จ</th>
 
 						</tr>
 					</thead>
@@ -128,15 +128,16 @@ body {
 	</div>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 	<script type="text/javascript">
-	
 
-	
+
+
 	function gotoUpdateggggg(filter) {
 		 document.getElementById("regid").value = filter;
 		var simpleTestBean = { "xxx" :  $('#regid').val()};
-		$("#Forms25").show('slow');
+	$("#Forms25").show('slow');
+	//$("#Forms25").onload="window.print()";
 
-		
+
 	}
 	$(document).ready(
 			function() {
@@ -152,9 +153,18 @@ body {
 									});
 						});
 			});
-	
 
 
+			function printDiv(divName) {
+			     var printContents = document.getElementById(divName).innerHTML;
+			     var originalContents = document.body.innerHTML;
+
+			     document.body.innerHTML = printContents;
+
+			     window.print();
+
+			     document.body.innerHTML = originalContents;
+			}
 </script>
 
 </body>
