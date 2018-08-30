@@ -156,6 +156,6 @@ body {
 
 
 </script>
-<script type="text/javascript" src="access/js/pdffile.js" charset="utf-8"> </script>
+
 </body>
 </html>

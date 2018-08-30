@@ -20,28 +20,3 @@
 </div>
 		
 	</div>
-		<script type="text/javascript">
-	
-
-	
-		 function genpdf() {
-			 html2canvas(document.getElementById("HTMLtoPDF"), {
-					onrendered: function(canvas){
-						var pdf = new jsPDF('p', 'pt', 'letter', 'mm', 'a4');
-						
-						var  img = canvas.toDataURL("image/png");
-						
-						   
-						  		pdf.addImage(img, 'JPEG',20,20);
-						  	      pdf.save('ใบเสร็จ.pdf');
-						      }
-							
-					});
-		}
-		    
-	
-
-
-</script>
-<script type="text/javascript" src="access/js/html2canvas.js"></script>
-<script type="text/javascript" src="access/js/jspdf.js"></script>
