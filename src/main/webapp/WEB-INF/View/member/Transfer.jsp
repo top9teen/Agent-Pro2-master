@@ -134,6 +134,30 @@ body {
 	function gotoUpdateggggg(filter) {
 		 document.getElementById("regid").value = filter;
 		var simpleTestBean = { "xxx" :  $('#regid').val()};
+		
+		$.ajax({
+			type : "POST",
+			url : "/Tran",
+			data : JSON.stringify(simpleTestBean),
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function(msg) {
+				console.log('Success')
+				$('#idtran').text('  เลขที่' +msg.reId);
+				$('#day').text('  วันที่'+msg.reDay + 'เดือน ' + msg.reMont + 'พ.ศ' + msg.reYrar);
+				$('#nametran').text(
+						'  ชื่อ  นามสกุล  ' + msg.reName
+								);
+				$('#emailtran').text('  Email ' + msg.reEmail);
+				$('#yearcartran').text('  ปีรถ  ' + msg.reCaryear);
+				$('#cartran').text('  ยี่ห่อ  ' + msg.reCar);
+				$('#modeltran').text('  รุ่น  ' + msg.reCarmodel);
+				$('#monnytran').text(
+						'  เงินที่จ่าย ' + msg.reMonny+" บาทถ้วน");
+				$('#admintran').text(
+						'ผู้รับเงิน  ' + msg.reAdmin +"  ");
+			}
+		});
 	$("#Forms25").show('slow');
 	//$("#Forms25").onload="window.print()";
 
