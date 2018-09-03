@@ -92,6 +92,7 @@ public class MemberController {
 	@Autowired
 	TransferDao transferDao;
 
+
 	public static final String PAYPAL_SUCCESS_URL = "success";
 	public static final String PAYPAL_CANCEL_URL = "cancel";
 
@@ -208,7 +209,66 @@ public class MemberController {
 		return "member/FormUser";
 	}
 	// end paypal
+	
+	
+	@RequestMapping(value = "/facebook")
+	public String facebook( String regid, Model model, HttpServletRequest request) {
+		System.out.println(regid);
+		String page = "";
+		LoginBean bean = new LoginBean();
+		LoginBeanSimple beansim = new LoginBeanSimple();
+		beansim.setEmail(regid);
+		
+		try {
+			bean = loginDao.loginfas(beansim);
+			if (bean.getLoEmail() != null) {
+				if (bean.getLoStatus().equals("1")) {
+					model.addAttribute("msg", "L");
+					page = "admin/welcome";
+				} else if (bean.getLoStatus().equals("2")) {
+					model.addAttribute("save", "1");
+					model.addAttribute("msg", "L");
+					page = "member/welcome";
+					emailBean = bean.getLoEmail();
+				}else if (bean.getLoStatus().equals("3")) {
+					model.addAttribute("msg", "G");
+					page = "index";
+					
+				}
 
+
+			} else if(bean.getLoEmail() == null) {
+				registerDao.registerfas(beansim);
+				bean = loginDao.loginfas(beansim);
+				if (bean.getLoStatus().equals("1")) {
+					model.addAttribute("msg", "L");
+					page = "admin/welcome";
+				} else if (bean.getLoStatus().equals("2")) {
+					model.addAttribute("save", "1");
+					model.addAttribute("msg", "L");
+					page = "member/welcome";
+					emailBean = bean.getLoEmail();
+				}else if (bean.getLoStatus().equals("3")) {
+					model.addAttribute("msg", "G");
+					page = "index";
+					
+				}
+				model.addAttribute("msg", "F");
+				page = "index";
+			}else {
+				model.addAttribute("msg", "F");
+				page = "index";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return page;
+	}
+
+
+	
+	
 	@RequestMapping(value = "/ddd")
 	public String ddd(Model model, HttpServletRequest request) throws SQLException, ParseException {
 		List<GatherBean> list = new ArrayList<>();

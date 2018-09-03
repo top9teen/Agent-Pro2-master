@@ -38,4 +38,30 @@ public class RegisterDao {
 		
 		
 	}
+public void registerfas (LoginBeanSimple beansim) throws SQLException{
+		
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		Connection conn = con.openConnect();
+		
+		try {
+			sql.append(" INSERT INTO UserTable (lo_email,lo_password,lo_status)VALUES(?,'facebook','2') ");
+			prepared = conn.prepareStatement(sql.toString());
+			prepared.setString(1,beansim.getEmail());
+	
+			prepared.executeUpdate();
+			
+
+	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			conn.close();
+		}
+		
+		
+	}
+	// end class
 }

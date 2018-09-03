@@ -49,6 +49,39 @@ public class LoginDao {
 	}
 	
 	
+	
+	public LoginBean loginfas (LoginBeanSimple beansim) throws SQLException{
+		LoginBean bean = new LoginBean();
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		Connection conn = con.openConnect();
+		
+		try {
+			sql.append(" SELECT * FROM  usertable WHERE lo_email = ? ");
+			prepared = conn.prepareStatement(sql.toString());
+			prepared.setString(1,beansim.getEmail());
+		
+
+			ResultSet rs = prepared.executeQuery();
+			while (rs.next()) {
+			bean.setLoEmail(rs.getString("lo_email"));
+			bean.setLoPassword(rs.getString("lo_password"));
+			bean.setLoStatus(rs.getString("lo_id"));
+			bean.setLoStatus(rs.getString("lo_status"));
+			}
+
+	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			conn.close();
+		}
+		
+		return bean ;
+	}
+	
 	public List<LoginBean> login22 () throws SQLException{
 		LoginBean bean = new LoginBean();
 		List<LoginBean> list  = new ArrayList<LoginBean>();
