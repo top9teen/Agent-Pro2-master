@@ -13,39 +13,51 @@ import org.springframework.web.bind.annotation.RestController;
 import com.test.Bean.AmphurBean;
 import com.test.Bean.CriteriaBean;
 import com.test.Bean.DistrictBean;
+
 import com.test.Bean.ProvinceBean;
+import com.test.Bean.ReceiptBean;
+import com.test.Bean.SimpleTestBean;
 import com.test.Dao.ProvinceDao;
 
 @RestController
 public class ProvinceController {
 
-	
 	@Autowired
 	ProvinceDao provinceDao;
-	
-	@RequestMapping(value="/province")
-	public List<ProvinceBean> province()throws SQLException {
+
+	@RequestMapping(value = "/province")
+	public List<ProvinceBean> province() throws SQLException {
 		List<ProvinceBean> list = new ArrayList<ProvinceBean>();
-	
+
 		list = provinceDao.findallProvince();
 		return list;
 	}
-	
-	@RequestMapping(value="/amphur", method = RequestMethod.POST)
-	public List<AmphurBean> amphur(@RequestBody CriteriaBean criteriaBean)throws SQLException {
-		
+
+	@RequestMapping(value = "/amphur", method = RequestMethod.POST)
+	public List<AmphurBean> amphur(@RequestBody CriteriaBean criteriaBean) throws SQLException {
+
 		List<AmphurBean> list2 = new ArrayList<>();
-		list2  = provinceDao.findAllaumhur(criteriaBean.getXxx());
+		list2 = provinceDao.findAllaumhur(criteriaBean.getXxx());
 		return list2;
 	}
-	
-	@RequestMapping(value="/district", method = RequestMethod.POST)
-	public List<DistrictBean> district(@RequestBody CriteriaBean criteriaBean) throws SQLException{
-		
+
+	@RequestMapping(value = "/district", method = RequestMethod.POST)
+	public List<DistrictBean> district(@RequestBody CriteriaBean criteriaBean) throws SQLException {
+
 		List<DistrictBean> list2 = new ArrayList<>();
-		list2  = provinceDao.findAlldistrict(criteriaBean.getXxx());
+		list2 = provinceDao.findAlldistrict(criteriaBean.getXxx());
 		return list2;
 	}
-	
-//End Class	
+
+	@RequestMapping(value = "/Tran", method = RequestMethod.POST)
+	public ReceiptBean bean22(@RequestBody SimpleTestBean simpleTestBean) throws SQLException {
+
+		ReceiptBean bean = new ReceiptBean();
+		Integer x = Integer.valueOf(simpleTestBean.getXxx());
+		bean = provinceDao.tran(x);
+
+		return bean;
+	}
+
+	// End Class
 }

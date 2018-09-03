@@ -134,8 +134,7 @@ label {
 				"xxx" : $('#regid').val()
 			};
 
-			$
-					.ajax({
+			$.ajax({
 						type : "POST",
 						url : "/FFF",
 						data : JSON.stringify(simpleTestBean),

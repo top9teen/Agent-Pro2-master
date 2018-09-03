@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.test.Bean.AmphurBean;
 import com.test.Bean.DistrictBean;
 import com.test.Bean.ProvinceBean;
+import com.test.Bean.ReceiptBean;
 import com.test.Bean.YearCarBean;
 import com.test.util.ConnectDB;
 
@@ -137,6 +138,43 @@ public YearCarBean yrbean(String lessyear) throws SQLException {
 		conn.close();
 	}
 	return bean;
+}
+
+public ReceiptBean tran (int reg)  throws SQLException{
+	ReceiptBean bean = new ReceiptBean();
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+	Connection conn = con.openConnect();
+	try {
+		sql.append(" SELECT * FROM receipt  WHERE re_id = ?  ");
+		prepared = conn.prepareStatement(sql.toString());
+		prepared.setInt(1,reg);
+		ResultSet rs = prepared.executeQuery();
+
+		while (rs.next()) {
+			bean.setReId(rs.getInt("re_id"));
+			bean.setReName(rs.getString("re_name"));
+			bean.setReEmail(rs.getString("re_email"));
+			bean.setReDay(rs.getInt("re_day"));
+			bean.setReMont(rs.getString("re_mont"));
+			bean.setReYrar(rs.getInt("re_year"));
+			bean.setReMonny(rs.getString("re_monny"));
+			bean.setReBank(rs.getString("re_bank"));
+			bean.setReAdmin(rs.getString("re_admin"));
+			bean.setReCaryear(rs.getString("re_caryear"));
+			bean.setReIdga(rs.getInt("re_idGa"));
+			bean.setReCar(rs.getString("re_car"));
+			bean.setReCarmodel(rs.getString("re_carmodel"));
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	finally {
+		conn.close();
+	}
+	return bean;
+	
 }
 
 //end class
