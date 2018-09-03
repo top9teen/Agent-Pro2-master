@@ -133,23 +133,51 @@
 				
 				</form>
 				<div id="fb-root"></div>
-				<script>
-					(function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id))
-							return;
-						js = d.createElement(s);
-						js.id = id;
-						js.src = 'https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v3.1';
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				</script>
+				
+				<div class="w3-section"> 
+				<input class="w3-btn w3-green w3-deep-blue w3-border" click="login()" value="Login"> 
+<p><fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button></p>
+
+
 
 			</div>
 		</div>
 	</div>
 </body>
 
+<script>
+window.fbAsyncInit = function () {
+  FB.init({ appId: '259177254718154', status: true, cookie: true,
+  xfbml: true
+});
+
+  FB.getLoginStatus(function (response) {
+	  greet();
+    if (response.session) {
+      greet();
+    }
+  });
+};
+(function () {
+  var e = document.createElement('script');
+  e.type = 'text/javascript';
+  e.src = document.location.protocol +
+  '//connect.facebook.net/en_US/all.js';
+  e.async = true;
+  document.getElementById('fb-root').appendChild(e);
+} ());
+
+function greet() {
+  FB.api('/me',{ locale: 'en_US', fields: 'name, email' }, function (response) {
+  alert('Welcome, ' + response.name + "!");
+  alert('Your email id is : '+ response.email);
+  console.log(response.email);
+
+  console.log(response);
+});
+}
+</script>
+ 
 <script type="text/javascript">
 	function fncregister() {
 		if (document.register.email.value == "") {
