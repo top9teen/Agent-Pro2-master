@@ -26,13 +26,12 @@
 		
 		
 		<div id="fb-root">
-<p><fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button></p>
+<a href="logout"><fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button></a>
 </div>
 </nav>
 
 
 
-
-  <script  type="text/javascript" src="access/js/face.js">
-
+ <script  type="text/javascript" src="access/js/face2.js"></script> 
+ 
       </script> 

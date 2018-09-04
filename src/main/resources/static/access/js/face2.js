@@ -31,6 +31,9 @@
 		    	
 		    	
 			 }
+		  else{
+			  location.href ='logout'; 
+		  }
 		
 		
 			
