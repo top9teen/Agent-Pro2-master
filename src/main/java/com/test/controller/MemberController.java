@@ -210,7 +210,7 @@ public class MemberController {
 	}
 	// end paypal
 	
-	
+	// face book
 	@RequestMapping(value = "/facebook")
 	public String facebook( String regid, Model model, HttpServletRequest request) {
 		System.out.println(regid);
@@ -218,6 +218,62 @@ public class MemberController {
 		LoginBean bean = new LoginBean();
 		LoginBeanSimple beansim = new LoginBeanSimple();
 		beansim.setEmail(regid);
+		
+		try {
+			bean = loginDao.loginfas(beansim);
+			if (bean.getLoEmail() != null) {
+				if (bean.getLoStatus().equals("1")) {
+					model.addAttribute("msg", "L");
+					page = "admin/welcome";
+				} else if (bean.getLoStatus().equals("2")) {
+					model.addAttribute("save", "1");
+					model.addAttribute("msg", "L");
+					page = "member/welcome";
+					emailBean = bean.getLoEmail();
+				}else if (bean.getLoStatus().equals("3")) {
+					model.addAttribute("msg", "G");
+					page = "index";
+					
+				}
+
+
+			} else if(bean.getLoEmail() == null) {
+				registerDao.registerfas(beansim);
+				bean = loginDao.loginfas(beansim);
+				if (bean.getLoStatus().equals("1")) {
+					model.addAttribute("msg", "L");
+					page = "admin/welcome";
+				} else if (bean.getLoStatus().equals("2")) {
+					model.addAttribute("save", "1");
+					model.addAttribute("msg", "L");
+					page = "member/welcome";
+					emailBean = bean.getLoEmail();
+				}else if (bean.getLoStatus().equals("3")) {
+					model.addAttribute("msg", "G");
+					page = "index";
+					
+				}
+				model.addAttribute("msg", "F");
+				page = "index";
+			}else {
+				model.addAttribute("msg", "F");
+				page = "index";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return page;
+	}
+
+	// google api
+	@RequestMapping(value = "/google")
+	public String google( String regid2, Model model, HttpServletRequest request) {
+		System.out.println(regid2);
+		String page = "";
+		LoginBean bean = new LoginBean();
+		LoginBeanSimple beansim = new LoginBeanSimple();
+		beansim.setEmail(regid2);
 		
 		try {
 			bean = loginDao.loginfas(beansim);

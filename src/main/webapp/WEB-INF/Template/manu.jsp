@@ -24,14 +24,10 @@
 		class="fa fa-trash w3-margin-right"></i>ออกจากระบบ</a>
 		
 		
-		
-		<div id="fb-root">
-<a href="logout"><fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button></a>
-</div>
+
 </nav>
 
 
 
- <script  type="text/javascript" src="access/js/face2.js"></script> 
+
  
-      </script> 

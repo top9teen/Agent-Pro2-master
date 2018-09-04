@@ -5,7 +5,9 @@
 <head>
 <link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+  <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="956640272040-88pnior229iloi51jvmvd1m6lneq1h1v.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <jsp:include page="../Template/Header.jsp"></jsp:include>
 
 <style type="text/css">

@@ -46,7 +46,7 @@ public void registerfas (LoginBeanSimple beansim) throws SQLException{
 		Connection conn = con.openConnect();
 		
 		try {
-			sql.append(" INSERT INTO UserTable (lo_email,lo_password,lo_status)VALUES(?,'facebook','2') ");
+			sql.append(" INSERT INTO UserTable (lo_email,lo_password,lo_status)VALUES(?,'xxxx','2') ");
 			prepared = conn.prepareStatement(sql.toString());
 			prepared.setString(1,beansim.getEmail());
 	

@@ -4,10 +4,17 @@
 	});
 
 	  FB.getLoginStatus(function (response) {
+		
 	    if (response != null) {
 	      greet();
 	      
 	    }
+	    else if (response && response.status === 'connected') {
+            FB.logout(function(response) {
+            	 window.location.href = "/";
+            });
+        }
+	    
 	
 	    
 	  });
@@ -23,25 +30,24 @@
 
 	function greet() {
 	  FB.api('/me',{ locale: 'en_US', fields: 'name, email' }, function (response) {
-		  if(response.email != null){
-			   document.getElementById("regid").value = response.email;
-		     	document.welcome.action = "facebook"; 
-		     	
-		    	document.welcome.submit();  
-		    	
-		    	
-			 }
-		
-		
-			
-		    	
-	/* 	   document.getElementById("regid").value = response.email;
-	     	document.welcome.action = "facebook"; */
-	       console.log(response.email);
-	      console.log(response.name);
-	     
-	/* 	document.welcome.submit();  */
-	});
+		  var n = confirm("เข้าสู่ระบบด้วย Facebook !");
+	        if (n == true) {
+	        	  document.getElementById("regid").value = response.email;
+			     	document.welcome.action = "facebook"; 
+			    	document.welcome.submit();  
+	        } else {
+	        	
+	            FB.Event.subscribe('auth.logout', function(response) {                                              
+		            FB.logout(function(response) {
+		            	 window.location.href = "/";
+		            });
+		        });
+	           
+	              
+	               
+	                   
 
 	}
 	
+});
+	};

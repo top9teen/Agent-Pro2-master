@@ -23,17 +23,13 @@
 
 	function greet() {
 	  FB.api('/me',{ locale: 'en_US', fields: 'name, email' }, function (response) {
-		  if(response.email != null){
-			   document.getElementById("regid").value = response.email;
-		     	document.welcome.action = "facebook"; 
-		     	
-		    	document.welcome.submit();  
+		  
+		  
+	
+			 
 		    	
 		    	
 			 }
-		  else{
-			  location.href ='logout'; 
-		  }
 		
 		
 			
