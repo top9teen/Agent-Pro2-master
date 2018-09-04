@@ -23,4 +23,9 @@ public class IndexController {
 		
 		return "admin/welcome";
 	}
+	@RequestMapping(value = "/vvvsss")
+	public String vvvsss() {
+		
+		return "member/welcome";
+	}
 }

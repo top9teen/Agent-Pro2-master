@@ -17,9 +17,22 @@
 		class="fa fa-hourglass-end w3-margin-right"></i>รายการสินเชื่อ</a> <a href="#"
 		class="w3-bar-item w3-button"><i
 		class="fa fa-trash w3-margin-right"></i>ติดต่อเรา</a>
-		
-		<fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button>
+
+
 		<a href="logout"
 		class="w3-bar-item w3-button"><i
 		class="fa fa-trash w3-margin-right"></i>ออกจากระบบ</a>
+		
+		
+		
+		<div id="fb-root">
+<p><fb:login-button autologoutlink="true" perms="user_about_me,email"></fb:login-button></p>
+</div>
 </nav>
+
+
+
+
+  <script  type="text/javascript" src="access/js/face.js">
+
+      </script> 
