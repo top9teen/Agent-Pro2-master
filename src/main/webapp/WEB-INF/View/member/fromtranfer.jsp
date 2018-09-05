@@ -2,8 +2,12 @@
 	pageEncoding="utf-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="access/css/A4.css">
-<link rel="stylesheet" href="access/css/bootstrap.min.css">
+<style>
+ p{
+ font: inherit;
+ }
+</style>
+<link rel="stylesheet" href="access/css/pdf.css">
 <div  class="page" style="width: 80%;">
 	<%
 		int a = 0;
@@ -13,15 +17,16 @@
 	<br>
 	<br>
 	<div
-		style="border-width: 5px; border-style: double; border-color: #336699">
+		style="border-width: 3px; border-style: solid; border-color: green;" >
 
-
-		<p id="idtran"></p>
+<br>
+		<p  id="idtran"></p>
 		<h2 align="center">ใบเสร็จรับเงิน ระบบวิเคราะห์สินเชื่อรถยนต์</h2>
 		<h2 align="center">OFFICIAL RECEIPT</h2>
 		<p align="right" id="day"></p>
 		<hr>
-		<div>
+		
+			<div >
 			<p id="nametran"></p>
 			<p id="emailtran"></p>
 			<p id="yearcartran"></p>
@@ -30,6 +35,7 @@
 			<p id="monnytran"></p>
 			<p align="right" id="admintran"></p>
 		</div>
+	
 
 
 
