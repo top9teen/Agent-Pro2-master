@@ -116,93 +116,33 @@ h3 {
 
 		</div>
 		<div class="w3-modal-content w3-card w3-animate-bottom">
-			<form action="gotoreg">
+
+
+		<form action="gotoreg">
 				<input type="hidden" value="<%=mibean.getGroupType()%>"
 					id="groupType2" name="groupType2"> <input type="hidden"
 					value="<%=mibean.getCarMake2()%>" id="carMakeed" name="carMakeed">
-				<h3 align="center">ธนาคาร กสิกร</h3>
-				<div class="row">
-					<div class="col-sm-4">
-						<img alt="" src="access/img/logo/kr2.jpg"
-							style="border-radius: 50%;"><br> <br> <br>
+					<div id = "f1">
+				
 					</div>
-					<div class="col-sm-4">
-						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;" id="kaper"> <%=yebean.getYrPercent() %> %</h2>
-						<label id="kabant"> </label>
-					</div>
-					<div class="col-sm-4">
-						<input type="hidden" name="typebank" value="ka1">
-						<button type="submit" class="button button2">เลือก</button>
-					</div>
-				</div>
+			
 			</form>
+			
 		</div>
 
 		<br>
-		<div class="w3-modal-content w3-card w3-animate-bottom">
-			<form action="gotoreg">
-				<h3 align="center">ธนาคาร กรุงศรี</h3>
-				<div class="row">
-					<div class="col-sm-4">
-						<img alt="" src="access/img/logo/kr1.jpg"
-							style="border-radius: 50%;"><br> <br> <br>
-					</div>
-					<div class="col-sm-4">
-						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="krabant"> </label>
-					</div>
-					<div class="col-sm-4">
-						<input type="hidden" name="typebank" value="kr1">
-						<button type="submit" class="button button2">เลือก</button>
-					</div>
-				</div>
-			</form>
+		<div class="w3-modal-content w3-card w3-animate-bottom" id="f2">
+			
 
 		</div>
 		<br>
-		<div class="w3-modal-content w3-card w3-animate-bottom">
-			<form action="gotoreg">
-				<h3 align="center">ธนาคาร ไทยพาณิชย์</h3>
-				<div class="row">
-					<div class="col-sm-4">
-						<img alt="" src="access/img/logo/kr3.jpg"
-							style="border-radius: 50%;"><br> <br> <br>
-					</div>
-					<div class="col-sm-4">
-						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="scabant"> </label>
-					</div>
-					<div class="col-sm-4">
-						<input type="hidden" name="typebank" value="sc1">
-						<button type="submit" class="button button2">เลือก</button>
-					</div>
-				</div>
-			</form>
+		<div class="w3-modal-content w3-card w3-animate-bottom" id="f3">
+		
 
 		</div>
 		<br>
-		<div class="w3-modal-content w3-card w3-animate-bottom">
-			<form action="gotoreg">
-				<h3 align="center">ธนาคาร ธนชาต</h3>
-				<div class="row">
-					<div class="col-sm-4">
-						<img alt="" src="access/img/logo/k4.jpg"
-							style="border-radius: 50%;"><br> <br> <br>
-					</div>
-					<div class="col-sm-4">
-						<p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p>
-						<h2 style="color: green;"><%=yebean.getYrPercent() %> %</h2>
-						<label id="thabant"> </label>
-					</div>
-					<div class="col-sm-4">
-						<input type="hidden" name="typebank" value="th1">
-						<button type="submit" class="button button2">เลือก</button>
-					</div>
-				</div>
-			</form>
+		<div class="w3-modal-content w3-card w3-animate-bottom" id="f4">
+			
 
 		</div>
 
@@ -211,12 +151,13 @@ h3 {
 		<!-- end class -->
 	</div>
 
-	
+
 
 </body>
 <script type="text/javascript">
 	$(document).ready(
 			function() {
+				
 				/* $('#kabant').text('วงเงินสูงสุด'); */
 				var miradoBean = {
 					"groupType" : $('#groupType2').val(),
@@ -232,8 +173,13 @@ h3 {
 					success : function(msg) {
 						console.log('Success')
 
-						$('#kabant').text('วงเงินสูงสุด'+ msg.kaPrice +'บาท');
+					$('#f1').append('<h3 align="center">ธนาคาร กสิกร</h3><div class="row"><div class="col-sm-4"><img alt="" src="access/img/logo/kr2.jpg"style="border-radius: 50%;"><br> <br> <br></div><div class="col-sm-4"><p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p><h2 style="color: green;" id="g1"></h2><label id="kabant"> </label></div><div class="col-sm-4"><input type="hidden" name="typebank" value="ka1"><button type="submit" class="button button2">เลือก</button></div></div>');
 
+						
+						$('#kabant').text('วงเงินสูงสุด'+ msg.kaPrice +'บาท');
+						$('#g1').text('<%=yebean.getYrPercent() %>'  +  ' %');
+						$('#b1').append('<button type="submit" class="button button2">เลือก</button>');
+						
 					}
 				});
 				
@@ -247,7 +193,11 @@ h3 {
 					success : function(msg) {
 						console.log('Success')
 
+							$('#f2').append('<form action="gotoreg"><h3 align="center">ธนาคาร กรุงศรี</h3><div class="row"><div class="col-sm-4"><img alt="" src="access/img/logo/kr1.jpg"style="border-radius: 50%;"><br> <br> <br></div><div class="col-sm-4"><p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p><h2 style="color: green;" id="g2"></h2><label id="krabant"> </label></div><div class="col-sm-4" id="b2"><input type="hidden" name="typebank" value="kr1"></div></div></form>');
+						
 						$('#krabant').text('วงเงินสูงสุด'+ msg.krPrice +'บาท');
+						$('#g2').text('<%=yebean.getYrPercent() %>'   + ' %');
+						$('#b2').append('<button type="submit" class="button button2">เลือก</button>');
 
 					}
 				});
@@ -263,7 +213,12 @@ h3 {
 					success : function(msg) {
 						console.log('Success')
 
+						$('#f3').append('<form action="gotoreg"><h3 align="center">ธนาคาร ไทยพาณิชย์</h3><div class="row"><div class="col-sm-4"><img alt="" src="access/img/logo/kr3.jpg"style="border-radius: 50%;"><br> <br> <br></div><div class="col-sm-4"><p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p><h2 style="color: green;" id="g3"></h2><label id="scabant"> </label></div><div class="col-sm-4" id="b3"><input type="hidden" name="typebank" value="sc1"></div></div></form>');
+
+						
 						$('#scabant').text('วงเงินสูงสุด'+ msg.scPrice +'บาท');
+						$('#g3').text('<%=yebean.getYrPercent() %>'   + ' %');
+						$('#b3').append('<button type="submit" class="button button2">เลือก</button>');
 
 					}
 				});
@@ -278,7 +233,11 @@ h3 {
 					success : function(msg) {
 						console.log('Success')
 
+						$('#f4').append('<form action="gotoreg"><h3 align="center">ธนาคาร ธนชาต</h3><div class="row"><div class="col-sm-4"><img alt="" src="access/img/logo/k4.jpg"style="border-radius: 50%;"><br> <br> <br></div><div class="col-sm-4"><p>อัตราดอกเบี้ยเริ่มต้นอายุสัญญา</p><h2 style="color: green;" id="g4"></h2><label id="thabant"> </label></div><div class="col-sm-4" id="b4"><input type="hidden" name="typebank" value="th1"></div></div></form>');
+						
 						$('#thabant').text('วงเงินสูงสุด'+ msg.thPrice +'บาท');
+						$('#g4').text('<%=yebean.getYrPercent() %>'   + ' %');
+						$('#b4').append('<button type="submit" class="button button2">เลือก</button>');
 
 					}
 				});

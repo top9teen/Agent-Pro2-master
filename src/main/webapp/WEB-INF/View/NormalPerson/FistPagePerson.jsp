@@ -1,6 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<style>
+/* Shared */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
 
+
+/* Facebook */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+.loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+}
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+
+/* Google */
+.loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+.loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #E74B37;
+}
+</style>
 <body>
 
 	<!-- Side Navigation -->
@@ -119,139 +183,148 @@
 
 						<div class="w3-section">
 							 <input type="button"
-								class="w3-btn w3-green w3-deep-orange w3-border w3-right"
+								class="btn btn-primary w3-right btn-lg btn-block"
 								onclick="document.getElementById('register').style.display='block'"
 								value="สมัคร"> <input type="submit"
-								class="w3-btn w3-green w3-deep-blue w3-border w3-right"
+								class="btn btn-success w3-border w3-right btn-lg btn-block"
 								value="เข้าสู่ระบบ">
 							<div align="left" class="fb-like"
 								data-href="https://developers.facebook.com/docs/plugins/"
 								data-layout="standard" data-action="like" data-size="small"
 								data-show-faces="true" data-share="true"></div>
 						</div>
+
 					</div>
 
 				</form>
-				<form action="" name="welcome">
-					
+				<br>
+				<div class="w3-panel">
+					<form action="" name="welcome">
 
-					<input type="hidden" name="regid" id="regid">
-<div id="fb-root">
-<a  class="w3-btn w3-green w3-deep-blue w3-border"  onclick="fbAuthUser();" id="fb">Loginfacebook</a>
-</div>
 
-</form>
-<form action="" name="welcome22">
-<input type="hidden" name="regid2" id="regid2">
-  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-  </form>
+						<input type="hidden" name="regid" id="regid">
+						<div id="fb-root">
+
+							<div class="w3-section" align="center" >
+								<a  class="btn btn-info btn-lg btn-block loginBtn loginBtn--facebook  w3-center "
+									onclick="fbAuthUser();" id="fb"> Log in with Facebook</a>
+
+							</div>
+
+
+						</div>
+
+					</form>
+					<form action="" name="welcome22">
+						<input type="hidden" name="regid2" id="regid2">
+						<div align="center" data-onsuccess="onSignIn" data-theme="dark"
+							class="btn btn-info btn-lg btn-block loginBtn loginBtn--google w3-center "> Log in with Google+</div>
+					</form>
+					<br>
+				</div>
 			</div>
 		</div>
-	
+	</div>
 
- <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+	<script>
+		function onSignIn(googleUser) {
+			// Useful data for your client-side scripts:
+			var profile = googleUser.getBasicProfile();
+			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+			console.log('Full Name: ' + profile.getName());
+			console.log('Given Name: ' + profile.getGivenName());
+			console.log('Family Name: ' + profile.getFamilyName());
+			console.log("Image URL: " + profile.getImageUrl());
+			console.log("Email: " + profile.getEmail());
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        
-        var r = confirm("เข้าสู่ระบบด้วย goole !");
-        if (r == true) {
-        	 document.getElementById("regid2").value = profile.getEmail();
-          	document.welcome22.action = "google"; 
-         	document.welcome22.submit();
-        } else {
-        	 var auth2 = gapi.auth2.getAuthInstance();
-        	    auth2.signOut().then(function () {
-        	      console.log('User signed out.');
-        	      window.location.href = "/";
-        	    });
-        }
-        
-       
-      };
-    </script>
+			// The ID token you need to pass to your backend:
+			var id_token = googleUser.getAuthResponse().id_token;
+			console.log("ID Token: " + id_token);
+
+			var r = confirm("เข้าสู่ระบบด้วย goole !");
+			if (r == true) {
+				document.getElementById("regid2").value = profile.getEmail();
+				document.welcome22.action = "google";
+				document.welcome22.submit();
+			} else {
+				var auth2 = gapi.auth2.getAuthInstance();
+				auth2.signOut().then(function() {
+					console.log('User signed out.');
+					window.location.href = "/";
+				});
+			}
+
+		};
+	</script>
 
 </body>
 
 <script type="text/javascript">
-window.fbAsyncInit = function () {
-	  FB.init({ appId: '259177254718154', status: true, cookie: true,
-	  xfbml: true
-	});
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : '259177254718154',
+			status : true,
+			cookie : true,
+			xfbml : true
+		});
 
-	  FB.getLoginStatus(function (response) {
-		
-	    if (response != null) {
-	    	fbAuthUser();
-	      
-	    }
-	    else if (response && response.status === 'connected') {
-          FB.logout(function(response) {
-          	 window.location.href = "/";
-          });
-      }
-	    
-	
-	    
-	  });
+		FB.getLoginStatus(function(response) {
+
+			if (response != null) {
+				fbAuthUser();
+
+			} else if (response && response.status === 'connected') {
+				FB.logout(function(response) {
+					window.location.href = "/";
+				});
+			}
+
+		});
 	};
-	(function () {
-	  var e = document.createElement('script');
-	  e.type = 'text/javascript';
-	  e.src = document.location.protocol +
-	  '//connect.facebook.net/en_US/all.js';
-	  e.async = true;
-	  document.getElementById('fb-root').appendChild(e);
-	} ());
+	(function() {
+		var e = document.createElement('script');
+		e.type = 'text/javascript';
+		e.src = document.location.protocol
+				+ '//connect.facebook.net/en_US/all.js';
+		e.async = true;
+		document.getElementById('fb-root').appendChild(e);
+	}());
 
 	function fbAuthUser() {
-		
-	  FB.api('/me',{ locale: 'en_US', fields: 'name, email' }, function (response) {
-		  var s = "";
-		  if(s == ""){
-			  var n = confirm("เข้าสู่ระบบด้วย Facebook !");
-		        if (n == true) {
-		        	 console.log(response);
-		        	  document.getElementById("regid").value = response.email;
-				     	document.welcome.action = "facebook"; 
-				    	document.welcome.submit();  
-				    	s = "";
-		        } else {
-		        	
-		            FB.Event.subscribe('auth.logout', function(response) {                                              
-			            FB.logout(function(response) {
-			            	
-			            	s = "F";
-			            	 window.location.href = "/";
-			            });
-			        });
-		           
-		              
-		               
-		                   
 
-		}
-		  }
+		FB.api('/me', {
+			locale : 'en_US',
+			fields : 'name, email'
+		}, function(response) {
+			var s = "";
+			if (s == "") {
+				var n = confirm("เข้าสู่ระบบด้วย Facebook !");
+				if (n == true) {
+					console.log(response);
+					document.getElementById("regid").value = response.email;
+					document.welcome.action = "facebook";
+					document.welcome.submit();
+					s = "";
+				} else {
 
-	
-});
+					FB.Event.subscribe('auth.logout', function(response) {
+						FB.logout(function(response) {
+
+							s = "F";
+							window.location.href = "/";
+						});
+					});
+
+				}
+			}
+
+		});
 	};
-
 </script>
 
 
 
- 
+
 
 
 <script type="text/javascript">
