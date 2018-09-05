@@ -118,7 +118,7 @@ body {
 				</div>
 
 				<jsp:include page="fromtranfer.jsp"></jsp:include>
-				 <input type="button"
+				 <input type="button"
 					class="w3-btn w3-green w3-deep-orange w3-border w3-right"
 					onclick="document.getElementById('Forms25').style.display='none'"
 					value="ยกเลิก">
@@ -128,9 +128,6 @@ body {
 	</div>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
 	<script type="text/javascript">
-
-
-
 	function gotoUpdateggggg(filter) {
 		 document.getElementById("regid").value = filter;
 		var simpleTestBean = { "xxx" :  $('#regid').val()};
@@ -160,11 +157,8 @@ body {
 		});
 	$("#Forms25").show('slow');
 	//$("#Forms25").onload="window.print()";
-
-
 	}
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 				$("#myInput").on(
 						"keyup",
 						function() {
@@ -177,16 +171,11 @@ body {
 									});
 						});
 			});
-
-
 			function printDiv(divName) {
 			     var printContents = document.getElementById(divName).innerHTML;
 			     var originalContents = document.body.innerHTML;
-
 			     document.body.innerHTML = printContents;
-
 			     window.print();
-
 			     document.body.innerHTML = originalContents;
 			}
 </script>
