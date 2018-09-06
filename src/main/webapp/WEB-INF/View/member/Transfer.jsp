@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="access/css/A4.css">
 <link rel="stylesheet" href="access/css/bootstrap.min.css">
@@ -39,7 +39,7 @@ body {
 	<jsp:include page="../../Template/manu.jsp"></jsp:include>
 	<!-- Modal that pops up when you click on "New Message" -->
 
-	<div class="w3-main" style="margin-left: 400px;">
+	<div class="w3-main" style="margin-left: 300px;">
 
 		<i
 			class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top"
@@ -93,7 +93,7 @@ body {
 								/ <%=list.get(i).getReYrar()%></td>
 							<td align="center"><a
 								onclick="gotoUpdateggggg('<%=list.get(i).getReId()%>')"><span
-									class="glyphicon glyphicon-search"> </span></a></td>
+									class="fa fa-download" style="font-size:36px"> </span></a></td>
 
 
 

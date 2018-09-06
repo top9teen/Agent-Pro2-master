@@ -671,5 +671,34 @@ public class MemberController {
 		requst.getSession().setAttribute("list", list);
 		return "member/Transfer";
 	}
+	
+	@RequestMapping(value = "/repassword")
+	public String repassword(Model model){
+		
+			model.addAttribute("re", "");
+		
+		
+		return "member/repassword";
+	}
+	
+	@RequestMapping(value = "/refass")
+	public String refass(Model model,String newpass ){
+		LoginBean bean = new LoginBean();
+		LoginBeanSimple beansim = new LoginBeanSimple();
+		beansim.setEmail(emailBean);
+		beansim.setPassword(newpass);
+		try {
+			bean = loginDao.login(beansim);
+			model.addAttribute("re", "L");
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		
+		
+		return "member/repassword";
+	}
+	
 	// end class
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
 import com.test.util.ConnectDB;
+import com.test.util.KasikornDB;
 
 @Repository
 public class LoginDao {
@@ -122,5 +123,30 @@ public class LoginDao {
 		
 		return list ;
 	}
+	
+	public void sssser21(String email , String repass) throws SQLException {
+
+		KasikornDB con = new KasikornDB();
+		Connection conn = con.openConnect();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+
+		try {
+			sql.append(" UPDATE gather SET ga_mont = ? , ga_year = ? , ga_fistPeriod = ? WHERE  ga_id = ? ");
+			prepared = conn.prepareStatement(sql.toString());
+
+			prepared.setString(1, email);
+			prepared.setString(2, repass);
+
+			prepared.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			conn.close();
+		}
+
+	}
+
 	//End Class
 }

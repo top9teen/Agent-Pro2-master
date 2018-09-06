@@ -12,14 +12,14 @@
 		class="w3-bar-item w3-button w3-hide-large w3-large">ยกเลิก <i
 		class="fa fa-remove"></i></a> 
 	<a href="listuser" class="w3-bar-item w3-button"><i
-		class="fa fa-paper-plane w3-margin-right"></i>ดูรหัสของทุกคน</a> 
+		class="fa fa-users w3-margin-right"></i>ดูรหัสของทุกคน</a> 
 		 <a href="listproduck"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-trash w3-margin-right"></i>ดูรายการ</a>
+		class="fa fa-drivers-license w3-margin-right"></i>ดูรายการ</a>
 		<a href="transfer"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-trash w3-margin-right"></i>ดูประวัติการโอนเงิน</a>
+		class="fa fa-exchange w3-margin-right"></i>ดูประวัติการโอนเงิน</a>
 		<a href="logout"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-trash w3-margin-right"></i>ออกจากระบบ</a>
+		class="fa fa-remove w3-margin-right"></i>ออกจากระบบ</a>
 </nav>

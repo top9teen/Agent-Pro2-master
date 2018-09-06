@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="956640272040-88pnior229iloi51jvmvd1m6lneq1h1v.apps.googleusercontent.com">
@@ -29,7 +29,7 @@ body {
 </style>
 <title>ReFinder</title>
 </head>
-<% String result =  null  ; %>
+<% String result =  ""  ; %>
 <%	result = (String) request.getAttribute("msg"); %>
 <body>
 <%

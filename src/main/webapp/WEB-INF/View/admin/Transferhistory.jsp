@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />/logo8.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 body {
@@ -92,7 +92,7 @@ body {
 							<td><%=list.get(i).getReDay()%> / <%=list.get(i).getReMont()%>
 								/ <%=list.get(i).getReYrar()%></td>
 								<td align="center"><a  onclick="gotoUpdate('<%=list.get(i).getReId()%>')"><span
-								class="glyphicon glyphicon-search"> </span></a></td> 
+								class="fa fa-download"style="font-size:36px"> </span></a></td> 
 
 
 

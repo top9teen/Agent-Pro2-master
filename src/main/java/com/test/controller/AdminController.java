@@ -45,7 +45,7 @@ public class AdminController {
 		
 		requst.getSession().setAttribute("listUser", list);
 
-		return "member/CreditAnalysis";
+		return "admin/listproduck";
 	}
 	
 	@RequestMapping(value = "/transfer")

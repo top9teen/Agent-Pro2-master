@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="access/img/logo/logo8.png" />
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 body {
@@ -53,10 +53,7 @@ body {
 
 <div class="w3-modal-content w3-card w3-animate-bottom" >
 <div align="right">
-				<form name="welcome2" action="/" method="post">
-					<button class="w3-btn w3-green w3-deep-green w3-border "
-						onclick="ddd">ประวัติการจ่ายเงิน</button>
-				</form>
+			
 			</div>
 			<form name="welcome" action=".">
 			<input id="myInput" style="width: 30%" align="right" type="text"

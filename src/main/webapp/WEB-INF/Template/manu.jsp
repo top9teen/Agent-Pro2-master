@@ -14,14 +14,18 @@
 	<a href="welcome" class="w3-bar-item w3-button"><i
 		class="fa fa-paper-plane w3-margin-right"></i>วิเคราะห์สินเชื่อ</a> <a href="gotoCreditAnalysis"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-hourglass-end w3-margin-right"></i>รายการสินเชื่อ</a> <a href="#"
+		class="fa fa-hourglass-end w3-margin-right"></i>รายการสินเชื่อ</a> <a href="https://web.facebook.com/kritkrai.rakmit"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-trash w3-margin-right"></i>ติดต่อเรา</a>
-
-
+		class="	fa fa-users w3-margin-right"></i>ติดต่อเราทาง Facebook</a>
+		<a href="http://line.me/ti/p/top29902"
+		class="w3-bar-item w3-button"><i
+		class="	fa fa-users w3-margin-right"></i>ติดต่อเราทาง Line</a>
+		<a href="repassword"
+		class="w3-bar-item w3-button"><i
+		class="	fa fa-users w3-margin-right"></i>เปลี่ยนรหัสผ่าน</a>
 		<a href="logout"
 		class="w3-bar-item w3-button"><i
-		class="fa fa-trash w3-margin-right"></i>ออกจากระบบ</a>
+		class="fa fa-remove w3-margin-right"></i>ออกจากระบบ</a>
 		
 		
 

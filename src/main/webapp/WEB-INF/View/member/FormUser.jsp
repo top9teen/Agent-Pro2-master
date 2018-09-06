@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 body {
@@ -71,7 +71,8 @@ body {
 						<th class="text-center">เงินที่ต้องจ่ายต่อเดือน</th>
 						<th class="text-center">งวดที่เหลือ</th>
 						<th class="text-center">งวดทั้งหมด</th>
-						<th class="text-center">จ่ายค่างวด</th>
+						<th class="text-center">จ่ายผ่าน <span
+								class="	fa fa-cc-paypal"> </span>paypal</th>
 					</tr>
 				</thead>
 				<tbody id="myTable">
@@ -83,11 +84,10 @@ body {
 						<td><%=a = a + 1%></td>
 						<td><%=list.get(i).getGaName()%></td>
 						<td><%=list.get(i).getGaCar()%></td>
-						<td><%=list.get(i).getGaPrie()%> บาท</td>
+						<td ><%=list.get(i).getGaPrie()%> บาท</td>
 						<td><%=list.get(i).getGaFistPeriod()%></td>
 						<td><%=list.get(i).getGaLastPeriod()%></td>
-						<td align="center"><a  onclick="gotohos122('<%=list.get(i).getGaId()%>')"><span
-								class="glyphicon glyphicon-search"> </span></a></td> 
+						<td align="center"><a  class="btn btn-primary btn-sm" onclick="gotohos122('<%=list.get(i).getGaId()%>')">ส่งค่างวด</a></td> 
 
 
 					</tr>
@@ -113,7 +113,8 @@ body {
 		
 	}
 	$(document).ready(
-			function() {
+			function() { 
+				
 				$("#myInput").on(
 						"keyup",
 						function() {

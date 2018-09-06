@@ -78,8 +78,14 @@
 			onclick="document.getElementById('id01').style.display='block'"
 			style="background-color: #0193d7">เข้าสู่ระบบ <i
 			class="w3-padding fa fa-pencil"></i>
-		</a> <a href="#" class="w3-bar-item w3-button"><i
-			class="fa fa-paper-plane w3-margin-right"></i>ติดต่อเรา/เเชทกับเรา</a> <a
+		</a> 
+		<a href="https://web.facebook.com/kritkrai.rakmit"
+		class="w3-bar-item w3-button"><i
+		class="	fa fa-users w3-margin-right"></i>ติดต่อเราทาง Facebook</a>
+		<a href="http://line.me/ti/p/top29902"
+		class="w3-bar-item w3-button"><i
+		class="	fa fa-users w3-margin-right"></i>ติดต่อเราทาง Line</a>
+		 <a
 			href="#" class="w3-bar-item w3-button"><i
 			class="fa fa-hourglass-end w3-margin-right"></i>01-111-1111</a>
 	</nav>
