@@ -132,7 +132,7 @@ public class LoginDao {
 		StringBuilder sql = new StringBuilder();
 
 		try {
-			sql.append(" UPDATE gather SET ga_mont = ? , ga_year = ? , ga_fistPeriod = ? WHERE  ga_id = ? ");
+			sql.append(" UPDATE usertable SET ga_mont = ? , ga_year = ? , ga_fistPeriod = ? WHERE  ga_id = ? ");
 			prepared = conn.prepareStatement(sql.toString());
 
 			prepared.setString(1, email);
