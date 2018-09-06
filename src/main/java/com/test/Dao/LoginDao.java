@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.test.Bean.LoginBean;
 import com.test.Bean.LoginBeanSimple;
 import com.test.util.ConnectDB;
-import com.test.util.KasikornDB;
+
 
 @Repository
 public class LoginDao {
@@ -126,17 +126,17 @@ public class LoginDao {
 	
 	public void sssser21(String email , String repass) throws SQLException {
 
-		KasikornDB con = new KasikornDB();
+		ConnectDB con = new ConnectDB();
 		Connection conn = con.openConnect();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 
 		try {
-			sql.append(" UPDATE usertable SET ga_mont = ? , ga_year = ? , ga_fistPeriod = ? WHERE  ga_id = ? ");
+			sql.append(" UPDATE usertable SET lo_password = ?  WHERE  lo_email = ? ");
 			prepared = conn.prepareStatement(sql.toString());
 
-			prepared.setString(1, email);
-			prepared.setString(2, repass);
+			prepared.setString(1, repass);
+			prepared.setString(2, email);
 
 			prepared.executeUpdate();
 

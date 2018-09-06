@@ -5,36 +5,37 @@
 <style>
  p{
  font: inherit;
+ font-size: 16 px;
  }
 </style>
 <link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <link rel="stylesheet" href="access/css/pdf.css">
 <div  class="page" style="width: 80%;">
-	<%
-		int a = 0;
-	%><div id="printableArea" >
+
+	
+	<div id="printableArea" style="padding: 10mm; ">
 	
 	<br>
 	<br>
 	<br>
 	<div
-		style="border-width: 3px; border-style: solid; border-color: green;" >
+		style="border: 3px; border-style: solid; border-color: black; "  >
 
 <br>
-		<p  id="idtran"></p>
+		<p  id="idtran"  style="margin-left: 5mm;"></p>
 		<h2 align="center">ใบเสร็จรับเงิน ระบบวิเคราะห์สินเชื่อรถยนต์</h2>
 		<h2 align="center">OFFICIAL RECEIPT</h2>
-		<p align="right" id="day"></p>
+		<p align="right" style="margin-right: 5mm;" id="day"></p>
 		<hr>
 		
-			<div >
+			<div style="margin-left: 8mm" >
 			<p id="nametran"></p>
 			<p id="emailtran"></p>
 			<p id="yearcartran"></p>
 			<p id="cartran"></p>
 			<p id="modeltran"></p>
 			<p id="monnytran"></p>
-			<p align="right" id="admintran"></p>
+			<p align="right" style="margin-right: 8mm;" id="admintran"></p>
 		</div>
 	
 

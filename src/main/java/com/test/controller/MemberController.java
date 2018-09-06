@@ -171,6 +171,7 @@ public class MemberController {
 		M = cal.get(Calendar.MONTH);
 		D = cal.get(Calendar.DATE);
 		Y = cal.get(Calendar.YEAR);
+		
 		bean = formMonnyDao.vss(BosTERS);
 		a = bean.getGaId();
 		m = M + 2;
@@ -682,14 +683,24 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/refass")
-	public String refass(Model model,String newpass ){
+	public String refass(Model model,String newpass,String repassed ) throws SQLException{
 		LoginBean bean = new LoginBean();
 		LoginBeanSimple beansim = new LoginBeanSimple();
 		beansim.setEmail(emailBean);
-		beansim.setPassword(newpass);
+		beansim.setPassword(repassed);
 		try {
 			bean = loginDao.login(beansim);
-			model.addAttribute("re", "L");
+	
+			if (bean.getLoPassword() != null) {
+				 loginDao.sssser21(emailBean,newpass);
+				 System.out.println(newpass);
+				 System.out.println(bean.getLoPassword());
+				model.addAttribute("re", "L");
+			}else if(bean.getLoPassword() == null) {
+				model.addAttribute("re", "F");
+			}
+				
+			
 		
 		} catch (Exception e) {
 			e.printStackTrace();

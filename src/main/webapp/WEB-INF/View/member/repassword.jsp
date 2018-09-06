@@ -46,7 +46,7 @@ body {
 
 <div class="w3-modal-content w3-card w3-animate-bottom" >
 <%
-						if (result.equals("G")) {
+						if (result.equals("F")) {
 					%>
 					<div class="alert alert-danger">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -63,8 +63,8 @@ body {
 					<%
 						}
 					%>
-				<form action="refass" name = "refass">
-				<h2>เปลี่ยนรหัสผ่าน</h2>
+				<form action="refass" name = "refass23" OnSubmit="return vvvvvff();">
+				<h2 align="center">เปลี่ยนรหัสผ่าน</h2>
 					<div class="w3-panel">
 					<label>รหัสเดิม</label> <input
 						class="w3-input w3-border w3-margin-bottom" type="text"
@@ -94,26 +94,26 @@ body {
 	</div>
 
 <script type="text/javascript">
-	function fncregister() {
-		if (document.refass.repassed.value == "") {
+	function vvvvvff() {
+		if (document.refass23.repassed.value == "") {
 			alert('กรุณา ใส่รหัสเดิม');
-			document.refass.repassed.focus();
+			document.refass23.repassed.focus();
 			return false;
 		}
 
-		if (document.refass.newpass.value == "") {
+		if (document.refass23.newpass.value == "") {
 			alert('กรุณา ใส่รหัสผ่านใหม่');
-			document.refass.newpass.focus();
+			document.refass23.newpass.focus();
 			return false;
 		}
-		if (document.refass.newpass2.value == "") {
+		if (document.refass23.newpass2.value == "") {
 			alert('กรุณา ใส่รหัสผ่านใหม่อีกครั้ง');
-			document.refass.newpass2.focus();
+			document.refass23.newpass2.focus();
 			return false;
 		}
-		if (document.refass.newpass.value != document.refass.newpass2.value) {
+		if (document.refass23.newpass.value != document.refass23.newpass2.value) {
 			alert('กรุณารหัสผ่านไม่ตรงกัน');
-			document.refass.newpass.focus();
+			document.refass23.newpass.focus();
 			return false;
 		}
 	}
