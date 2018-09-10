@@ -141,7 +141,7 @@ body {
 			success : function(msg) {
 				console.log('Success')
 				$('#idtran').text('     เลขที่'+ msg.reYrar +'/' +msg.reId);
-				$('#day').text('  วันที่'+msg.reDay + 'เดือน ' + msg.reMont + 'พ.ศ' + msg.reYrar);
+				$('#day').text('  วันที่ '+msg.reDay + ' เดือน  ' + msg.reMont + ' พ.ศ  ' + msg.reYrar);
 				$('#nametran').text(
 						'  ชื่อ - นามสกุล  ' + msg.reName
 								);

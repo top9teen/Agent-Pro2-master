@@ -35,7 +35,8 @@
 			<p id="cartran"></p>
 			<p id="modeltran"></p>
 			<p id="monnytran"></p>
-			<p align="right" style="margin-right: 8mm;" id="admintran"></p>
+			<p  align="right" style="margin-right: 10mm;"><img  style=" max-width: 300px; height: 80px; " src="access/img/logo/lll.jpg"></p>
+			 <p align="right" style="margin-right: 8mm;" id="admintran"></p>
 		</div>
 	
 
