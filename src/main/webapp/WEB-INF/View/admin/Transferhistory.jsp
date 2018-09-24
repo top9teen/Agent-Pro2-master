@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />/logo8.png" />
+<link rel="icon" type="image/png" href="access/img/logo/logo8.jpg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 body {
@@ -91,7 +91,7 @@ body {
 							<td><%=list.get(i).getReMonny()%></td>
 							<td><%=list.get(i).getReDay()%> / <%=list.get(i).getReMont()%>
 								/ <%=list.get(i).getReYrar()%></td>
-								<td align="center"><a  onclick="gotoUpdate('<%=list.get(i).getReId()%>')"><span
+								<td align="center"><a  onclick="gotoUpdate22bb('<%=list.get(i).getReId()%>')"><span
 								class="fa fa-download"style="font-size:36px"> </span></a></td> 
 
 
@@ -107,7 +107,22 @@ body {
 
 
 		</div>
+	<div class="w3-modal " id="Forms25" style="display: none;">
+			<div class="w3-modal-content w3-animate-zoom">
+				<div class="w3-container w3-padding w3-sand">
+					<span
+						onclick="document.getElementById('Forms25').style.display='none'"
+						class="w3-button w3-red w3-right w3-xxlarge"><i
+						class="fa fa-remove"></i></span>
+				</div>
 
+				<jsp:include page="../member/fromtranfer.jsp"></jsp:include>
+				 <input type="button"
+					class="w3-btn w3-green w3-deep-orange w3-border w3-right"
+					onclick="document.getElementById('Forms25').style.display='none'"
+					value="ยกเลิก">
+			</div>
+		</div>
 		<!-- end class -->
 	</div>
 	<jsp:include page="../../Template/Footer.jsp"></jsp:include>
@@ -127,6 +142,43 @@ body {
 									});
 						});
 			});
+	function printDiv(divName) {
+	     var printContents = document.getElementById(divName).innerHTML;
+	     var originalContents = document.body.innerHTML;
+	     document.body.innerHTML = printContents;
+	     window.print();
+	     document.body.innerHTML = originalContents;
+	}
+	function gotoUpdate22bb(filter) {
+		 document.getElementById("regid").value = filter;
+		var simpleTestBean = { "xxx" :  $('#regid').val()};
+		
+		$.ajax({
+			type : "POST",
+			url : "/Tran",
+			data : JSON.stringify(simpleTestBean),
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function(msg) {
+				console.log('Success')
+				$('#idtran').text('     เลขที่'+ msg.reYrar +'/' +msg.reId);
+				$('#day').text('  วันที่ '+msg.reDay + ' เดือน  ' + msg.reMont + ' พ.ศ  ' + msg.reYrar);
+				$('#nametran').text(
+						'  ชื่อ - นามสกุล  ' + msg.reName
+								);
+				$('#emailtran').text('  Email ' + msg.reEmail);
+				$('#yearcartran').text('  ปีรถ  ' + msg.reCaryear);
+				$('#cartran').text('  ยี่ห่อ  ' + msg.reCar);
+				$('#modeltran').text('  รุ่น  ' + msg.reCarmodel);
+				$('#monnytran').text(
+						'  เงินที่จ่าย ' + msg.reMonny+" บาทถ้วน");
+				$('#admintran').text(
+						'ผู้รับเงิน  ' + msg.reAdmin +"  ");
+			}
+		});
+	$("#Forms25").show('slow');
+	//$("#Forms25").onload="window.print()";
+	}
 	</script>
 </body>
 </html>
